@@ -41,7 +41,7 @@ const PORT = process.env.PORT || 3001;
 
 
 app.get("/api", (req, res) => {
-  res.json({message: "Hello, World! From Node"})
+  res.json({message: `Connection Confirmed from Node.js Backend Proxy at Port: ${PORT}`})
 });
 
 app.listen(PORT, () => {
@@ -56,7 +56,7 @@ app.get('/visit', (req, res) => {
 
 app.get('/sensors', (req, res) => {
     const filename = path.join(currentFolder, 'sensors.html')
-    https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=10
+    https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=1
     `, resp => {
     let data = "";
 
@@ -92,7 +92,7 @@ app.get('/sensors', (req, res) => {
     console.log("Working values: " + field1Values)
     
 
-    res.send("Data " + field1Values)
+    res.json({sensors: `${field1Values}`})
     
     });
 

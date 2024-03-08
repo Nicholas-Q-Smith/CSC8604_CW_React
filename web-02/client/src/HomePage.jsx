@@ -10,16 +10,27 @@ import './HomePage.css';
 
 import HumidityIndicator from './components/HumidityIndicator';
 import SoilMoistureIndicator from './components/SoilMoistureIndicator';
+import TemperatureIndicator from './components/TemperatureIndicator';
 
 function HomePage(){
 
     const [data, setData] = React.useState(null);
 
+    const [temp, setTemp] = React.useState(null);
+
     React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(data.message))
+      
+    fetch("/sensors")
+      .then((res) => res.json())
+      .then((temp) => setTemp(temp.sensors));
     }, []);
+
+    console.log(!temp ? 'NULL' : temp);
+
+
 
     return (
         <>
@@ -33,12 +44,15 @@ function HomePage(){
 
         <hr class="rounded"></hr>
 
-        <HumidityIndicator/>
+        <HumidityIndicator humidity={Number(temp)}/>
 
         <hr class="rounded"></hr>
 
         <SoilMoistureIndicator/>
 
+        <hr class="rounded"></hr>
+
+        <TemperatureIndicator/>
 
         <Footer></Footer>
         

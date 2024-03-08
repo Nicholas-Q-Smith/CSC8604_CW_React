@@ -4,11 +4,12 @@ import {
   LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator,
 } from 'devextreme-react/linear-gauge';
 
-function HumidityIndicator () {
+
+function HumidityIndicator (props) {
   return (
     <LinearGauge
       id="gauge"
-      value={55}
+      value={props.humidity}
     >
 
     <ValueIndicator
