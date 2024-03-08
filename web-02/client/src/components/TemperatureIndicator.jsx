@@ -1,34 +1,41 @@
 import React from 'react';
 
 import {
-  LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator,
+  LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator
 } from 'devextreme-react/linear-gauge';
 
-function SoilMoistureIndicator () {
+function TemperatureIndicator () {
 return (
     <LinearGauge
         id="gauge"
-        value={10}
+        value={17}
     >
 
-    <ValueIndicator color="#FFFF00" />
+    <ValueIndicator
+        color={"#00FF00"} // Hex color for green
+    />
+
         <Scale
             startValue={0}
-            endValue={100}
+            endValue={45}
             tickInterval={5}
             minorTickInterval={0.625}
         >
 
 
         
-            <MinorTick visible={true} />
+        <MinorTick visible={true} />
+
         </Scale>
+
         <Export enabled={false} />
-        <Title text="Soil Moisture">
+
+        <Title text="Temperature">
             <Font size={28} />
         </Title>
+        
     </LinearGauge>
 );
 }
 
-export default SoilMoistureIndicator;
+export default TemperatureIndicator;
