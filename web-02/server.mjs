@@ -8,13 +8,15 @@ import { fileURLToPath} from 'url'
 
 import https from 'https'
 
+import fs from 'fs'
+
+import parse from 'node-html-parser'
+
 const app = express()
 
 const currentFolder = path.dirname(fileURLToPath(import.meta.url))
 
 let visitors = 0
-
-
 
 var client = new ThingSpeakClient();
 
@@ -39,10 +41,6 @@ app.get('/bye', (req,res) => {
     res.send('Goodbye')
 })
 
-app.get('/hello', (req, res) => {
-    const fileName = path.join(currentFolder, 'hello.html')
-    res.sendFile(fileName)
-})
 
 app.get('/image.jpg', (req, res) => {
     const filename = path.join(currentFolder, '../assets/image.jpeg')
@@ -56,6 +54,7 @@ app.get('/visit', (req, res) => {
 })
 
 app.get('/sensors', (req, res) => {
+    const filename = path.join(currentFolder, 'sensors.html')
     https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=10
     `, resp => {
     let data = "";
@@ -90,6 +89,13 @@ app.get('/sensors', (req, res) => {
     const field1Values = feeds.map(feed => feed.field1);
     
     console.log("Working values: " + field1Values)
+    
+
+    const root = parse(res);
+
+    const body = root.querySelector('body');
+
+    body.appendChild('<h1 id="sensorval">' + field1Values + '</h1>');
 
     res.send("Data " + field1Values)
     
