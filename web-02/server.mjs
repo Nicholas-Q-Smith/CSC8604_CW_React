@@ -1,3 +1,5 @@
+import { createRoot } from 'react-dom/client';
+
 import express from 'express'
 
 import path from 'path'
@@ -13,6 +15,7 @@ import fs from 'fs'
 import parse from 'node-html-parser'
 
 const app = express()
+
 
 const currentFolder = path.dirname(fileURLToPath(import.meta.url))
 
@@ -31,21 +34,19 @@ var err;
 var resp;
 
 
+const PORT = process.env.PORT || 3001;
 
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.get('/bye', (req,res) => {
-    res.send('Goodbye')
-})
 
 
-app.get('/image.jpg', (req, res) => {
-    const filename = path.join(currentFolder, '../assets/image.jpeg')
-    res.sendFile(filename)
-})
+
+app.get("/api", (req, res) => {
+  res.json({message: "Hello, World! From Node"})
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 app.get('/visit', (req, res) => {
     const filename = path.join(currentFolder, 'visit.html')
@@ -91,12 +92,6 @@ app.get('/sensors', (req, res) => {
     console.log("Working values: " + field1Values)
     
 
-    const root = parse(res);
-
-    const body = root.querySelector('body');
-
-    body.appendChild('<h1 id="sensorval">' + field1Values + '</h1>');
-
     res.send("Data " + field1Values)
     
     });
@@ -116,4 +111,4 @@ app.get('/sensors', (req, res) => {
 
 app.use('/website', express.static(currentFolder));
 
-app.listen(3000)
+// app.listen(3000)
