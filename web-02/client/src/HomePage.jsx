@@ -8,7 +8,8 @@ import Footer from './components/pageFormat/Footer';
 
 import './HomePage.css';
 
-import HumidityIndicator from './components/pageFormat/HumidityIndicator';
+import HumidityIndicator from './components/HumidityIndicator';
+import SoilMoistureIndicator from './components/SoilMoistureIndicator';
 
 function HomePage(){
 
@@ -33,6 +34,10 @@ function HomePage(){
         <hr class="rounded"></hr>
 
         <HumidityIndicator/>
+
+        <hr class="rounded"></hr>
+
+        <SoilMoistureIndicator/>
 
 
         <Footer></Footer>
