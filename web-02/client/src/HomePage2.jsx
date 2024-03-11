@@ -12,7 +12,7 @@ import HumidityIndicator from './components/HumidityIndicator';
 import SoilMoistureIndicator from './components/SoilMoistureIndicator';
 import TemperatureIndicator from './components/TemperatureIndicator';
 
-function HomePage(){
+function HomePage2(){
 
     const [data, setData] = React.useState(null);
 
@@ -38,7 +38,7 @@ function HomePage(){
 
         <hr class="rounded"></hr>
         
-        <p className='title'>Welcome to the home page</p>
+        <p className='title'>Welcome to the home page (2)</p>
         <p>Node Proxy Confirmation: {!data ? "Loading..." : data}</p>
 
         <hr class="rounded"></hr>
@@ -61,4 +61,4 @@ function HomePage(){
     }
 
 
-export default HomePage;
+export default HomePage2;
