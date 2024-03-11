@@ -92,7 +92,8 @@ app.get('/sensors', (req, res) => {
     console.log("Working values: " + field1Values)
     
 
-    res.json({sensors: `${field1Values}`})
+    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
+    // res.json({rh: `${Number(68)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
     
     });
 
