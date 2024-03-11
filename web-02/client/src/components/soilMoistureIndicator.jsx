@@ -4,11 +4,11 @@ import {
   LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator,
 } from 'devextreme-react/linear-gauge';
 
-function SoilMoistureIndicator () {
+function SoilMoistureIndicator (props) {
 return (
     <LinearGauge
         id="gauge"
-        value={10}
+        value={props.moisture}
     >
 
     <ValueIndicator color="#FFFF00" />

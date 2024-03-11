@@ -16,7 +16,7 @@ function HomePage(){
 
     const [data, setData] = React.useState(null);
 
-    const [temp, setTemp] = React.useState(null);
+    const [vals, setVals] = React.useState({});
 
     React.useEffect(() => {
     fetch("/api")
@@ -25,12 +25,11 @@ function HomePage(){
       
     fetch("/sensors")
       .then((res) => res.json())
-      .then((temp) => setTemp(temp.sensors));
+      .then((vals) => setVals(vals))
     }, []);
 
-    console.log(!temp ? 'NULL' : temp);
 
-
+    console.log(vals)
 
     return (
         <>
@@ -44,15 +43,15 @@ function HomePage(){
 
         <hr class="rounded"></hr>
 
-        <HumidityIndicator humidity={Number(temp)}/>
+        <HumidityIndicator humidity={Number(vals.rh)}/>
 
         <hr class="rounded"></hr>
 
-        <SoilMoistureIndicator/>
+        <SoilMoistureIndicator moisture={Number(vals.sm)}/>
 
         <hr class="rounded"></hr>
 
-        <TemperatureIndicator/>
+        <TemperatureIndicator temp={Number(vals.tmp)}/>
 
         <Footer></Footer>
         
