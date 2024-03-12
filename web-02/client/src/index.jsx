@@ -9,7 +9,7 @@ import Header from './components/pageFormat/Header';
 import { LinearGaugeComponent } from '@syncfusion/ej2-react-lineargauge'
 
 import { IGRLinearGaugeModule, IgrLinearGauge } from 'igniteui-react-gauges';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
 
 
 
@@ -21,22 +21,23 @@ import HomePage2 from './HomePage2';
 
 export default function App() {
   return(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="layout1" element={<HomePage />} />
-          <Route path="layout2" element={<HomePage2 />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+  
+    <Routes>
+          <Route exact path="/" element={<Home />}/>
+          <Route exact path="layout1" element={<HomePage />} />
+          <Route exact path="layout2" element={<HomePage2 />} />
+    </Routes>
+  
   );
 }
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App/>
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
