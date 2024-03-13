@@ -13,6 +13,8 @@ import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';
 import Layout from '../components/Layout';
 import DigitalTemp from '../components/DigitalTemp';
+import PlantTile from '../components/tiles/PlantTile';
+import RelevantPlants from '../components/RelevantPlants';
 
 let view1 = true;
 
@@ -56,8 +58,10 @@ function HomePage(){
 
         <DigitalTemp temp={Number(vals.tmp)}/>
 
+        <hr class="rounded"></hr>
         
-        
+        <RelevantPlants/>
+
         </>
         
         );
