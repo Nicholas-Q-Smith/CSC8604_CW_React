@@ -13,6 +13,7 @@
     "igniteui-react-core": "^18.5.1",
     "igniteui-react-gauges": "^18.5.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
     "react-fusioncharts": "^4.0.0",
     "react-scripts": "5.0.1",
@@ -44,6 +45,8 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.22.3"
+    "bootstrap": "^5.3.3",
+    "react-router-dom": "^6.22.3",
+    "w3-css": "^4.1.0"
   }
 }
