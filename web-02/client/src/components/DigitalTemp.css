@@ -1,0 +1,66 @@
+
+.two-columns-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 400px;
+    margin:0 auto;
+    
+}
+
+.tempBoxL {
+    border: 1px solid black;
+    border-color: black;
+    border-top:1px;
+    border-left:1px;
+    border-right:1px;
+    border-bottom: 1px;
+    /* border-style: solid; */
+}
+
+.tempBoxR {
+    border: 1px solid black;
+    border-color: black;
+    border-top:1px;
+    border-left:1px;
+    border-right:1px;
+    border-bottom: 1px;
+    /* border-style: solid; */
+}
+
+.tempIndicL {
+    padding-top: 0px;
+    font: 'Hammersmith One';
+    font-weight: 1000;
+    font-size: 80px;
+    margin:0;
+    padding-left: 25px;
+}
+
+.tempIndicR {
+    padding-top: 0px;
+    font: 'Hammersmith One';
+    font-weight: 1000;
+    font-size: 80px;
+    margin:0;
+    padding-left: 60px;
+}
+
+.sensorLocL {
+    font-style: italic;
+    padding-top: 0px;
+    font: 'Hammersmith One';
+    font-weight: 500;
+    font-size: 16px;
+    margin:0;
+    padding-left:10px;
+}
+
+.sensorLocR {
+    font-style: italic;
+    padding-top: 0px;
+    font: 'Hammersmith One';
+    font-weight: 500;
+    font-size: 16px;
+    margin:0;
+    padding-left:85px;
+}
