@@ -14,9 +14,9 @@ function RelevantPlants(props) {
     return (
         <>
         <div className={'three-columns-grid'}>
-            <div className={'col1'}>Column 1</div>
-            <div className={'col2'}>Column 2</div>
-            <div className={'col3'}>Column 3</div>
+            <div className={'col1'}><PlantTile type="Col1"/></div>
+            <div className={'col2'}><PlantTile type="Col2"/></div>
+            <div className={'col3'}><PlantTile type="Col3"/></div>
         </div>
         </>
     );
