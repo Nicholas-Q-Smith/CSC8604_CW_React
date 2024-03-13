@@ -39,7 +39,7 @@ function Layout () {
     </Tabs> */}
 
 
-  <div class="w3-bar w3-border w3-white w3-xxlarge w3-mobile w3-top">
+  <div class="w3-bar w3-border w3-white w3-xxlarge w3-mobile">
     <a onClick={()=> navigate('/')} class=
       {activeTab == 0 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Home</a>
     <a onClick={()=> navigate('/layout1')} class=
