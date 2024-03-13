@@ -31,9 +31,12 @@ function Home(){
         <div class="container">
             <img src={require('./assets/plot shapes-01.png')} alt="Image 1" className="image"
             onClick={() => navigate('layout1')}/>
-            <img src={require('./assets/plot shapes-02.png')} alt="Image 2" class="image"/>
-            <img src={require('./assets/plot shapes-03.png')} alt="Image 3" class="image"/>
-            <img src={require('./assets/plot shapes-04.png')} alt="Image 4" class="image"/>
+            <img src={require('./assets/plot shapes-02.png')} alt="Image 2" class="image"
+            onClick={() => navigate('layout2')}/>
+            {/* <img src={require('./assets/plot shapes-03.png')} alt="Image 3" class="image"
+            onClick={() => navigate('layout3')}/>
+            <img src={require('./assets/plot shapes-04.png')} alt="Image 4" class="image"
+            onClick={() => navigate('layout1')}/> */}
         </div>
         </div>
         </>
