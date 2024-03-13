@@ -12,6 +12,7 @@ import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';
 import Layout from '../components/Layout';
+import DigitalTemp from '../components/DigitalTemp';
 
 let view1 = true;
 
@@ -59,7 +60,7 @@ function HomePage(){
 
         <hr class="rounded"></hr>
 
-        <TemperatureIndicator temp={Number(vals.tmp)}/>
+        <DigitalTemp temp={Number(vals.tmp)}/>
 
         
         
