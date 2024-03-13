@@ -4,6 +4,8 @@ import {
   LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator,
 } from 'devextreme-react/linear-gauge';
 
+import '../font.css';
+
 function SoilMoistureIndicator (props) {
 
     let colour = '#000000';
@@ -38,8 +40,8 @@ function SoilMoistureIndicator (props) {
                 <MinorTick visible={true} />
             </Scale>
             <Export enabled={false} />
-            <Title text="Soil Moisture">
-                <Font size={28} />
+            <Title text={"Soil Moisture: " + props.moisture + "%"}>
+                <Font size={28} family='Julius Sans One' />
             </Title>
         </LinearGauge>
     );

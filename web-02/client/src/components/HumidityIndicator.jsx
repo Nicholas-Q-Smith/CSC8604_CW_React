@@ -5,6 +5,10 @@ import {
 } from 'devextreme-react/linear-gauge';
 
 
+import '../font.css';
+
+import '../fonts/JuliusSansOne-Regular.ttf';
+
 function HumidityIndicator (props) {
   return (
     <LinearGauge
@@ -28,8 +32,8 @@ function HumidityIndicator (props) {
         <MinorTick visible={true} />
       </Scale>
       <Export enabled={false} />
-      <Title text="Humidity">
-        <Font size={28} />
+      <Title text={"Humidity: " + props.humidity + "%"}>
+        <Font size={28} family='Julius Sans One'/>
       </Title>
     </LinearGauge>
   );

@@ -1,6 +1,8 @@
 import React from 'react';
 import './DigitalTemp.css';
 
+import "../fonts/HammersmithOne-Regular.ttf";
+
 
 
 function DigitalTemp(props) {
