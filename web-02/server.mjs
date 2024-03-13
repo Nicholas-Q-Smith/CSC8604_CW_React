@@ -36,17 +36,15 @@ var resp;
 
 const PORT = process.env.PORT || 3001;
 
-
-
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 
 app.get("/api", (req, res) => {
   res.json({message: `Connection Confirmed from Node.js Backend Proxy at Port: ${PORT}`})
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
 
 app.get('/visit', (req, res) => {
     const filename = path.join(currentFolder, 'visit.html')
