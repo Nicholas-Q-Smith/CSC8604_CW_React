@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+// import MaterialLayout from './components/MaterialLayout';
 
 import Header from './components/pageFormat/Header';
 
@@ -11,6 +11,11 @@ import './HomePage.css';
 import HumidityIndicator from './components/HumidityIndicator';
 import SoilMoistureIndicator from './components/SoilMoistureIndicator';
 import TemperatureIndicator from './components/TemperatureIndicator';
+import Layout from './components/Layout';
+
+let view1 = true;
+
+let view2 = false;
 
 function HomePage(){
 
@@ -31,9 +36,13 @@ function HomePage(){
 
     console.log(vals)
 
+    if(view1) {    
+
     return (
         <>
         
+        <Layout/>
+
         <Header/>
 
         <hr class="rounded"></hr>
@@ -58,6 +67,11 @@ function HomePage(){
         </>
         
         );
+    } else if(view2) {
+
+      //other view 
+
+    }
     }
 
 
