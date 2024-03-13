@@ -15,8 +15,9 @@ import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Home from './Home';
-import HomePage from './HomePage';
-import HomePage2 from './HomePage2';
+import HomePage from './iteration-01/HomePage';
+import HomePage2 from './iteration-01/HomePage2';
+import HomePageNew from './iteration-02/HomePageNew';
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
           <Route exact path="/" element={<Home />}/>
           <Route exact path="layout1" element={<HomePage />} />
           <Route exact path="layout2" element={<HomePage2 />} />
+          <Route exact path="new-iter-home" element={<HomePageNew/>} />
     </Routes>
   
   );
