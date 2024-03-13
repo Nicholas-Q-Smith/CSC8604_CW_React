@@ -8,7 +8,7 @@ import Footer from './components/pageFormat/Footer';
 
 import './Home.css';
 
-
+import './fonts/JuliusSansOne-Regular.ttf';
     
    
 

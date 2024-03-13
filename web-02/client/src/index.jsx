@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+import './fonts/HammersmithOne-Regular.ttf';
+
+import './fonts/JuliusSansOne-Regular.ttf';
+
 import reportWebVitals from './reportWebVitals';
 
 import Header from './components/pageFormat/Header';
@@ -21,6 +25,9 @@ import HomePageNew from './iteration-02/HomePageNew';
 
 
 export default function App() {
+
+  
+
   return(
   
     <Routes>
