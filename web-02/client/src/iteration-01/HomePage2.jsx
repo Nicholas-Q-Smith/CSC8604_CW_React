@@ -1,23 +1,20 @@
 import React from 'react';
 
-// import MaterialLayout from './components/MaterialLayout';
 
-import Header from './components/pageFormat/Header';
 
-import Footer from './components/pageFormat/Footer';
+import Header from '../components/pageFormat/Header';
+
+import Footer from '../components/pageFormat/Footer';
+
+import Layout from '../components/Layout';
 
 import './HomePage.css';
 
-import HumidityIndicator from './components/HumidityIndicator';
-import SoilMoistureIndicator from './components/SoilMoistureIndicator';
-import TemperatureIndicator from './components/TemperatureIndicator';
-import Layout from './components/Layout';
+import HumidityIndicator from '../components/HumidityIndicator';
+import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
+import TemperatureIndicator from '../components/TemperatureIndicator';
 
-let view1 = true;
-
-let view2 = false;
-
-function HomePage(){
+function HomePage2(){
 
     const [data, setData] = React.useState(null);
 
@@ -36,8 +33,6 @@ function HomePage(){
 
     console.log(vals)
 
-    if(view1) {    
-
     return (
         <>
         
@@ -47,7 +42,7 @@ function HomePage(){
 
         <hr class="rounded"></hr>
         
-        <p className='title'>Welcome to the home page</p>
+        <p className='title'>Welcome to the home page (2)</p>
         <p>Node Proxy Confirmation: {!data ? "Loading..." : data}</p>
 
         <hr class="rounded"></hr>
@@ -67,12 +62,7 @@ function HomePage(){
         </>
         
         );
-    } else if(view2) {
-
-      //other view 
-
-    }
     }
 
 
-export default HomePage;
+export default HomePage2;
