@@ -6,12 +6,13 @@ import React from 'react';
 
 
 function PlantTile(props) {
-    let labelL = 'Left Sensor';
-    let labelR = 'Right Sensor';    
+    
+    let title = props.type;
+
 
     return (
         <>
-        <h1>Plant X</h1>
+        <p>{title}</p>
         </>
     );
 }
