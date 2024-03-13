@@ -44,12 +44,6 @@ function HomePage(){
         
         <Layout/>
 
-
-        
-        
-        <p className='title'>Welcome to the home page</p>
-        <p>Node Proxy Confirmation: {!data ? "Loading..." : data}</p>
-
         <hr class="rounded"></hr>
 
         <HumidityIndicator humidity={Number(vals.rh)}/>
