@@ -14,6 +14,8 @@ import fs from 'fs'
 
 import parse from 'node-html-parser'
 
+import plant_env_match from './client/src/data/plant-env-match.json' with {type: "json"};
+
 const app = express()
 
 
@@ -50,6 +52,110 @@ app.get('/visit', (req, res) => {
     const filename = path.join(currentFolder, 'visit.html')
     res.send("Visitors:" + (visitors+=1))
     res.sendFile(fileName)
+})
+
+app.get('/get-best-match', (req, res) => {
+  https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=50
+    `, resp => {
+    let data = "";
+
+    // A chunk of data has been recieved.
+    resp.on("data", chunk => {
+      data += chunk;
+
+    const obj = JSON.parse(data);
+    
+    // First and last values from those fetched
+
+    let startPoint = obj.feeds.at(0).entry_id;
+
+    let endPoint = obj.feeds.at(-1).entry_id;
+
+    console.log("Start point " + startPoint + " End point " + endPoint)
+    
+    // Prints out JSON object
+
+    console.log(obj);
+    
+    let feeds = obj.feeds;
+
+    // Maps out only the field1 values from the feed.
+    // This will need amendment as soon as the other 
+    // sensors are added to the channel, adding them in.
+
+    const field1Values = feeds.map(feed => feed.field1);
+    
+    // console.log("Working values: " + field1Values)
+    
+    let approvedValues = [];
+    let value = 0;
+
+    /* For some reason the sensor is misbehaving and sending values above 100
+    so we need to filter those out. 
+    It is likely an issue down to running the sensor on 3.3v right now, likely
+    needs 5v to work properly...
+
+    */
+    for(value in field1Values) {
+        if(value <= 100) {
+            approvedValues.push(value);
+        }
+    }
+
+    console.log(approvedValues)
+
+    value = 0;
+
+    /*
+    Now we need to calculate the average humidity from the approved values
+    This produces the mean for us
+    */
+
+    // let avgHumidity = approvedValues.reduce((a, b) => (a + b)) / approvedValues.length;
+    for(let i = 0; i < approvedValues.length; i++) {
+        value = value + Number(approvedValues[i]);
+    }
+
+    let avgHumidity = value / approvedValues.length;
+
+    console.log(value);
+
+    console.log("Average Humidity: " + avgHumidity);
+    
+
+    // console.log(plant_env_match.PlantClassifications);
+
+    /*
+      The below code iterates through all plant classifications and determines whether
+      after comparing the avg humidity to the range of BEST
+      humidities for each type, there is a match
+    */
+
+    for(let iterable in plant_env_match.PlantClassifications) {
+
+        if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
+              plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(avgHumidity)) {
+            console.log("Match found: " + plant_env_match.PlantClassifications[iterable].name)
+        } else {
+            console.log("No match found");
+        
+        }
+
+    }
+
+    });
+
+    // The whole response has been received. Print out the result.
+    resp.on("end", () => {
+      let url = JSON.parse(data).message;
+          
+    });
+  }).on("error", err => {
+    console.log("Error: " + err.message);
+  });
+
+  
+  
 })
 
 app.get('/sensors', (req, res) => {
@@ -107,6 +213,11 @@ app.get('/sensors', (req, res) => {
     
 
 })
+
+function range(start, end) {
+  console.log("Start: " + start + " End: " + end)
+  return([...Array(end + 1).keys()].filter(value => end >= value && start <= value ));
+}
 
 app.use('/website', express.static(currentFolder));
 
