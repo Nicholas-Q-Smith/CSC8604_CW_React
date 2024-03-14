@@ -131,17 +131,38 @@ app.get('/get-best-match', (req, res) => {
       humidities for each type, there is a match
     */
 
+    let finalJOBJ = [];
+
     for(let iterable in plant_env_match.PlantClassifications) {
 
         if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
-              plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(avgHumidity)) {
-            console.log("Match found: " + plant_env_match.PlantClassifications[iterable].name)
+              plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(47)) {
+                
+            console.log("Match found: " + plant_env_match.PlantClassifications[iterable].Type)
+            
+            finalJOBJ.push({type: `${plant_env_match.PlantClassifications[iterable].Type}`,
+            examples: [`${plant_env_match.PlantClassifications[iterable].Examples}`], 
+            struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
+            pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
+            light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`})
+
+            // console.log(JSON.stringify({type: `${plant_env_match.PlantClassifications[iterable].type}`,
+            // examples: [`${plant_env_match.PlantClassifications[iterable].Examples}`], 
+            // struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
+            // pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
+            // light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`}))
         } else {
             console.log("No match found");
         
         }
 
     }
+
+    console.log("Final JOBJ" + JSON.stringify(finalJOBJ[0]))
+
+    res.json(finalJOBJ);
+
+    
 
     });
 
