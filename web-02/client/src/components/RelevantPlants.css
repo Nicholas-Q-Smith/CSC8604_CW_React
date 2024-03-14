@@ -1,4 +1,13 @@
 /* container */
+
+.header {
+    text-align: center;
+    font-family: 'Julius Sans One';
+    font-size: 25px;
+    color: '#21437D';
+    
+}
+
 .three-columns-grid {
     display: grid;
     grid-auto-rows: 1fr;
