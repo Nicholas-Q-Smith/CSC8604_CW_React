@@ -1,6 +1,6 @@
 
 .container {
-    border-style: solid;
+    
     text-align: center;
     padding: 0% 0% 0% 0%;
 }
@@ -14,4 +14,19 @@
     max-width: 64px;
     max-height: 64px;
     borders: none;
+    margin: 0px 10px 0px 0px;
+}
+
+.plant_tile_head {
+    display:inline-block;
+    margin: 0px 0px 0px 0px;
+}
+
+.title_logo {
+    text-align: left;
+    margin: 0px 0px 0px 20px;
+}
+
+.plant_component {
+    border-style: solid;
 }

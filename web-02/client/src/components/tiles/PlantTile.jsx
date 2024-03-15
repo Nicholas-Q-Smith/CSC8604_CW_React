@@ -52,9 +52,18 @@ function PlantTile(props) {
 
     return (
         <>
+        <div className={'plant_component'}>
+        <div className={'title_logo'}>
+            <p className={'plant_tile_head'}>
+                <img src={logos[typ]} alt="Image 1" className="type_image"/>
+                <p className={'plant_tile_head'}>{typ}</p>
+            </p>
+        </div>
+        </div>
         <div className={'container'}>
-        <img src={logos[typ]} alt="Image 1" className="type_image"/>
-        <p>{typ}</p>
+        
+        
+        
         <Collapsible className={'collapsabletab'} trigger="Example Plants">
             <p>{examples}</p>
         </Collapsible>
