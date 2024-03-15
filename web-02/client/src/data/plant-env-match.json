@@ -180,6 +180,8 @@
           "HumidityUpperBound": 70,
           "SoilMoistureLowerBound": 40,
           "SoilMoistureUpperBound": 60,
+          "BestHumidityLowerBound": 0,
+          "BestHumidityUpperBound": 0
         
         }
     }

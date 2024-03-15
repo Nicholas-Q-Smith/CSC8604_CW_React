@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "bootstrap": "^5.3.3",
+    "react-collapsible": "^2.10.0",
     "react-router-dom": "^6.22.3",
     "w3-css": "^4.1.0"
   }
