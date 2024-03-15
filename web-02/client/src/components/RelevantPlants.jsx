@@ -54,7 +54,7 @@ function RelevantPlants(props) {
     return (
         <>
         <p style={{color: '#21437D'}} className={'header'}>Best Matching Plants</p>
-        <div className={'three-columns-grid'}>
+        <div>
             {plantsList[0]}
             {plantsList[1]}
             {plantsList[2]}
