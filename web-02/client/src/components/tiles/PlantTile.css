@@ -30,3 +30,21 @@
 .plant_component {
     border-style: solid;
 }
+
+.two_column_layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 450px;
+    margin: 0px 0px 0px 0px;
+    
+}
+
+.bm_left {
+    text-align: left;
+    margin: 0px 40px 0px 0px;
+}
+
+.bm_right {
+    text-align: left;
+    margin: 0px 0px 0px 40px;
+}

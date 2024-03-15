@@ -35,6 +35,7 @@ let logos = {'Root Vegetables': root_veg,
             'Berries': berries,
             'Flowers (Edible and Ornamental)': flowers};
 
+
             
 
 function PlantTile(props) {
@@ -49,6 +50,21 @@ function PlantTile(props) {
 
     let light = props.light;
 
+    let subitems = [];
+
+    console.log(examples[0]);
+
+    
+
+    for(let index = 0; index < examples.length; index++) {
+        console.log(examples[index]);
+        subitems.push(<p>{examples[index]}</p>);
+    }
+    // console.log(JSON.parse(examples));
+
+    // for (let i = 0; i < examples.length; i++) {
+    //     subitems.push(<p>{examples[i]}</p>);
+    // }
 
     return (
         <>
@@ -65,11 +81,26 @@ function PlantTile(props) {
         
         
         <Collapsible className={'collapsabletab'} trigger="Example Plants">
-            <p>{examples}</p>
+            <p>{subitems}</p>
         </Collapsible>
-        <p>{struct}</p>
-        <p>{pH}</p>
-        <p>{light}</p>
+        <div className={'two_column_layout'}>
+            <div className={'bm_left'}>
+                <p>Soil Recommendation:</p>
+                <p>pH Conditions:</p> 
+                <p>Sunlight Recommendation:</p> 
+            </div>
+            <div className={'bm_right'}>
+                <p >{struct}</p>
+                <p>{pH}</p>
+                <p>{light}</p>
+            </div>
+        
+        
+        
+        
+        
+        
+        </div>
         </div>
         </>
     );
