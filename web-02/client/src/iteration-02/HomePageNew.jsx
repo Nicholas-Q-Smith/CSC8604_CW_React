@@ -12,6 +12,7 @@ import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';
 import Layout from '../components/Layout';
+import HorizontalLayout from '../components/HorizontalLayout';
 import DigitalTemp from '../components/DigitalTemp';
 import PlantTile from '../components/tiles/PlantTile';
 import RelevantPlants from '../components/RelevantPlants';
@@ -26,6 +27,8 @@ function HomePage(){
 
     const [vals, setVals] = React.useState({});
 
+    const [plantvals, setPlantVals] = React.useState({});
+
     React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
@@ -34,9 +37,13 @@ function HomePage(){
     fetch("/sensors")
       .then((res) => res.json())
       .then((vals) => setVals(vals))
+    
+    fetch("/get-best-match")
+      .then((res) => res.json())
+      .then((plantvals) => setPlantVals({items: plantvals}))
     }, []);
 
-
+    
     console.log(vals)
 
     if(view1) {    
@@ -44,7 +51,7 @@ function HomePage(){
     return (
         <>
         
-        <Layout/>
+        <HorizontalLayout/>
 
         <hr class="rounded"></hr>
 
@@ -60,7 +67,7 @@ function HomePage(){
 
         <hr class="rounded"></hr>
         
-        <RelevantPlants/>
+        <RelevantPlants vals={plantvals}/>
 
         </>
         

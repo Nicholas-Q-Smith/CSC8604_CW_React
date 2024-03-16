@@ -1,6 +1,8 @@
-import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
+import { Outlet, Link, useNavigate, useLocation} from "react-router-dom";
 import Tab from 'react-bootstrap/Tabs';
 import Tabs from 'react-bootstrap/Tabs';
+
+import { useState } from "react";
 
 import closeIcon from "../assets/icons/close-icon.svg";
 
@@ -8,9 +10,10 @@ import './HorizontalLayout.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "w3-css";
 
+let isVisible = true;
+
 function hide() {
-
-
+    isVisible = !isVisible;
 }
 
 function Layout () {
@@ -19,7 +22,9 @@ function Layout () {
 
   let activeTab = 1;
 
-  let style = "w3-bar-item w3-button w3-padding-16";
+  const [show, setShow] = useState(false);
+
+  let visibility = "";
 
   if(window.location.pathname === "/") {
     activeTab = 0;
@@ -31,22 +36,18 @@ function Layout () {
     activeTab = 3;
   }
 
+  
+
   return (
     <>
-    {/* <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="w3-bar w3-black">
-      <Tab eventKey="home" title="Home" className="w3-bar-item w3-button">
-        <Link to="/">Home</Link>
-      </Tab>
-      <Tab eventKey="layout1" title="Layout 1" className="w3-bar-item w3-button">
-        <Link to="layout1">Layout 1</Link>
-      </Tab>
-      <Tab eventKey="layout2" title="Layout 2" className="w3-bar-item w3-button">
-        <Link to="layout2">Layout 2</Link>
-      </Tab>
-    </Tabs> */}
+  <div>
+    <button onClick={()=> {setShow(!show)}}>Show/Hide</button>
+  </div>
 
-
-  <div class="w3-sidebar w3-collapse w3-border w3-white w3-xxlarge w3-mobile">
+  {/* Shows or hides the side navigation bar */}
+  {show && <> 
+  <div style={!isVisible ? {display: "none"} : {display: "block"}} className={"w3-sidebar w3-bar-block w3-border w3-white w3-xxlarge w3-mobile "}>
+  
     <a onClick={()=> navigate('/')} class=
       {activeTab == 0 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Home</a>
     <a onClick={()=> navigate('/layout1')} class=
@@ -55,18 +56,22 @@ function Layout () {
     {activeTab == 2 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 2</a>
     <a onClick={()=> navigate('/new-iter-home')} class=
     {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>New-Iter</a>
-    {/* <a href="#" class="w3-bar-item w3-button w3-padding-16">Config</a> */}
-    <p className={"w3-bar-item w3-button"}>
-      Close
-    <img src={closeIcon} className="closeIcon"/>
+    <div onClick={()=> {setShow(!show)}} className={'w3-bar-item w3-button bordered'}>
+    <p>Close Sidebar
+    <img src={closeIcon} className={"closeIcon"}></img>
     </p>
+    </div>
     
-    {/* <a href="#" class="w3-bar-item w3-button w3-padding-16">Config</a> */}
+    
+    
   </div>
+  </>
+  }
 
-    {/* <Outlet /> */}
+    
     </>
   );
+  
 }
 
 export default Layout;

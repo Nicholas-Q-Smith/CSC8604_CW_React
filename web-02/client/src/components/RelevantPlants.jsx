@@ -12,18 +12,14 @@ function RelevantPlants(props) {
 
     const [data, setData] = React.useState(null);
 
-    const [vals, setVals] = React.useState({});
+    let vals = props.vals;
 
     React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message))
       
-    fetch("/get-best-match")
-      .then((res) => res.json())
-      .then((vals) => setVals({items: vals}))
     }, []);
-
 
     let labelL = 'Left Sensor';
     let labelR = 'Right Sensor';
