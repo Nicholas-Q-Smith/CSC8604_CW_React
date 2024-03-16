@@ -32,3 +32,8 @@
 .col3 {
     border: solid;
 }
+
+.Collapsible {
+    /* background-color: rgb(25, 49, 106); */
+    border-style: dotted;
+}
