@@ -70,35 +70,40 @@ function PlantTile(props) {
         <>
         <div className={'plant_component'}>
         <div className={'title_logo'}>
-            <p className={'plant_tile_head'}>
-                <img src={logos[typ]} alt="Image 1" className="type_image"/>
-                <p className={'plant_tile_head'}>{typ}</p>
-            </p>
+
+            
+            <div className={"two_column_layout"}>
+                <div className={'element1'}>
+                    <img src={logos[typ]} alt="Image 1" className="type_image"/>
+                </div>
+                <div className={'element2'}>
+                    <Collapsible className={'plant_tile_head'} trigger={typ}>
+                        <Collapsible className={'collapsabletab'} trigger="Example Plants">
+                            <p>{subitems}</p>
+                        </Collapsible>
+                    <div className={'two_column_layout'}>
+                        <div className={'bm_left'}>
+                            <p>Soil:</p>
+                            <p>pH:</p> 
+                            <p>Sunlight:</p> 
+                        </div>
+                        <div className={'bm_right'}>
+                            <p>{struct}</p>
+                            <p>{pH}</p>
+                            <p>{light}</p>
+                        </div>
+                    </div>
+                    </Collapsible>
+                </div>
+            </div>
+
+            
+            
+        
+            
         </div>
-        </div>
+        
         <div className={'container'}>
-        
-        
-        
-        <Collapsible className={'collapsabletab'} trigger="Example Plants">
-            <p>{subitems}</p>
-        </Collapsible>
-        <div className={'two_column_layout'}>
-            <div className={'bm_left'}>
-                <p>Soil Recommendation:</p>
-                <p>pH Conditions:</p> 
-                <p>Sunlight Recommendation:</p> 
-            </div>
-            <div className={'bm_right'}>
-                <p >{struct}</p>
-                <p>{pH}</p>
-                <p>{light}</p>
-            </div>
-        
-        
-        
-        
-        
         
         </div>
         </div>
