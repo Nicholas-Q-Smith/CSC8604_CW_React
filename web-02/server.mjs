@@ -86,10 +86,16 @@ app.get('/get-best-match', (req, res) => {
     // sensors are added to the channel, adding them in.
 
     const field1Values = feeds.map(feed => feed.field1);
+
+    const field2Values = feeds.map(feed => feed.field2);
     
     // console.log("Working values: " + field1Values)
     
-    let approvedValues = [];
+    let approvedHumidityValues = [];
+    
+    let approvedTemperatureValues = [];
+
+
     let value = 0;
 
     /* For some reason the sensor is misbehaving and sending values above 100
@@ -100,11 +106,11 @@ app.get('/get-best-match', (req, res) => {
     */
     for(value in field1Values) {
         if(value <= 100) {
-            approvedValues.push(value);
+            approvedHumidityValues.push(value);
         }
     }
 
-    console.log(approvedValues)
+    console.log(approvedHumidityValues)
 
     value = 0;
 
@@ -114,16 +120,37 @@ app.get('/get-best-match', (req, res) => {
     */
 
     // let avgHumidity = approvedValues.reduce((a, b) => (a + b)) / approvedValues.length;
-    for(let i = 0; i < approvedValues.length; i++) {
-        value = value + Number(approvedValues[i]);
+    for(let i = 0; i < approvedHumidityValues.length; i++) {
+        value = value + Number(approvedHumidityValues[i]);
     }
 
-    let avgHumidity = value / approvedValues.length;
+    let avgHumidity = value / approvedHumidityValues.length;
 
     console.log(value);
 
     console.log("Average Humidity: " + avgHumidity);
     
+    value = 0;
+
+    for(value in field2Values) {
+        if(value <= 100) {
+            approvedTemperatureValues.push(value);
+        }
+    }
+
+    console.log(approvedTemperatureValues)
+
+    value = 0;
+
+    for(let i = 0; i < approvedTemperatureValues.length; i++) {
+        value = value + Number(approvedTemperatureValues[i]);
+    }
+
+    let avgTemperature = value / approvedTemperatureValues.length;
+
+    console.log(value);
+
+
 
     // console.log(plant_env_match.PlantClassifications);
 
@@ -138,7 +165,9 @@ app.get('/get-best-match', (req, res) => {
     for(let iterable in plant_env_match.PlantClassifications) {
 
         if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
-              plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)) {
+              plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)
+              && range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
+                plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureUpperBound).includes(23)) {
                 
             console.log("Match found: " + plant_env_match.PlantClassifications[iterable].Type)
             
@@ -215,11 +244,13 @@ app.get('/sensors', (req, res) => {
     // console.log(objs)
 
     const field1Values = feeds.map(feed => feed.field1);
+
+    const field2Values = feeds.map(feed => feed.field2);
     
-    console.log("Working values: " + field1Values)
+    console.log("Working values: " + field1Values + "" + field2Values)
     
 
-    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
+    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(field2Values)}`, sm: `${Number(50)}`})
     // res.json({rh: `${Number(68)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
     
     });
@@ -239,6 +270,9 @@ app.get('/sensors', (req, res) => {
 
 function range(start, end) {
   console.log("Start: " + start + " End: " + end)
+  if(start == end) {
+    return([start]);
+  }
   return([...Array(end + 1).keys()].filter(value => end >= value && start <= value ));
 }
 
