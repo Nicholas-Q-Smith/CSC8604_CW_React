@@ -2,21 +2,42 @@ import { Outlet, Link, useNavigate, useLocation} from "react-router-dom";
 import Tab from 'react-bootstrap/Tabs';
 import Tabs from 'react-bootstrap/Tabs';
 
+import Switch from "react-switch";
+
 import { useState } from "react";
 
 import closeIcon from "../assets/icons/close-icon.svg";
 
 import burgerMenu from "../assets/icons/burger-menu.svg";
 
-import './HorizontalLayout.css';
+import homeMenu from "../assets/icons/home-menu-icon.svg";
+
+import updateIcon from '../assets/icons/auto-update-icon.svg';
+
+import SwitchToggle from './SwitchToggle'
+
+import './HorizontalLayoutNav.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "w3-css";
+import { Component } from "devextreme-react/cjs/core/component";
 
 let isVisible = true;
+
+let isAutoUpdate = false;
+
+
+
+
+
+
+
+
 
 function hide() {
     isVisible = !isVisible;
 }
+
+
 
 function Layout () {
 
@@ -25,6 +46,8 @@ function Layout () {
   let activeTab = 1;
 
   const [show, setShow] = useState(false);
+
+  const [autoUpdate, setAutoUpdate] = useState(false);
 
   let visibility = "";
 
@@ -42,10 +65,36 @@ function Layout () {
 
   return (
     <>
-  <div className={"burgerContainer"}>
-    <img src={burgerMenu} onClick={()=> {setShow(!show)}} className={"burgerMenu"}></img>
-    {/* <button onClick={()=> {setShow(!show)}}>Show/Hide</button> */}
-  </div>
+  <div class="navgrid"> 
+          <div className={"burgerContainer"}>
+            <img className={"burgerMenu"} src={burgerMenu}onClick={()=> {setShow(!show)}}></img>
+          </div>
+
+          <div className={"homeContainer"}>
+            <img className={"homeMenu"} src={homeMenu} onClick={()=>navigate('/')}></img>
+          </div>
+
+          <div className={"refreshContainer"}>
+            <img className={"refreshIcon"} src={updateIcon} onClick={()=>window.location.reload()}></img>
+
+          </div>
+
+          <div className={"autoUpdateContainer"}>
+
+            
+              <SwitchToggle/>
+            
+          </div>
+          </div>
+          
+          
+          {/* <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">About</a></li> */}
+  
+        
+    
+
 
   {/* Shows or hides the side navigation bar */}
   {show && <> 

@@ -13,6 +13,7 @@ import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';
 import Layout from '../components/Layout';
 import HorizontalLayout from '../components/HorizontalLayout';
+import HorizontalLayoutNav from '../components/HorizontalLayoutNav';
 import DigitalTemp from '../components/DigitalTemp';
 import PlantTile from '../components/tiles/PlantTile';
 import RelevantPlants from '../components/RelevantPlants';
@@ -92,9 +93,9 @@ function HomePage(){
     return (
         <>
         
-        <HorizontalLayout/>
+        <HorizontalLayoutNav/>
 
-        <hr class="rounded"></hr>
+        {/* <hr class="rounded-top"></hr> */}
 
         <HumidityIndicator humidity={Number(vals.rh)}/>
 
