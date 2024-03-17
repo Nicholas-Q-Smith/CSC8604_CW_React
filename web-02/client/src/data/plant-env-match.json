@@ -1,0 +1,190 @@
+{
+    "PlantClassifications": [
+      {
+        "Type": "Root Vegetables",
+        "Examples": ["Carrots", "Potatoes", "Turnips", "Radishes", "Beetroots"],
+        "Conditions": {
+          "Structure": "Well-drained, loamy soil",
+          "pH": "5.5 to 7",
+          "Light": "6 hours/day",
+          "HumidityLowerBound": 30,
+          "HumidityUpperBound": 60,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 10,
+          "TemperatureUpperBound": 21,
+          "BestHumidityLowerBound": 45,
+          "BestHumidityUpperBound": 50,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 15,
+          "BestTemperatureUpperBound": 16
+        }
+      },
+      {
+        "Type": "Leafy Greens",
+        "Examples": ["Lettuce", "Spinach", "Kale", "Swiss Chard", "Cabbage"],
+        "Conditions": {
+          "Structure": "Fertile, well-drained, loamy soil",
+          "pH": "6 to 7",
+          "Light": "Partial shade to full sun (4-6 hours/day)",
+          "HumidityLowerBound": 40,
+          "HumidityUpperBound": 80,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 7,
+          "TemperatureUpperBound": 24,
+          "BestHumidityLowerBound": 60,
+          "BestHumidityUpperBound": 65,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 15,
+          "BestTemperatureUpperBound": 16
+        }
+      },
+      {
+        "Type": "Legumes",
+        "Examples": ["Peas", "Beans", "Lentils"],
+        "Conditions": {
+          "Structure": "Well-drained, loamy soil",
+          "pH": "6 to 7",
+          "Light": "6 hours/day",
+          "HumidityLowerBound": 30,
+          "HumidityUpperBound": 60,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 15,
+          "TemperatureUpperBound": 27,
+          "BestHumidityLowerBound": 45,
+          "BestHumidityUpperBound": 50,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 21,
+          "BestTemperatureUpperBound": 21
+        }
+      },
+      
+      {
+        "Type": "Fruiting Vegetables",
+        "Examples": ["Tomatoes", "Peppers", "Cucumbers", "Courgettes", "Pumpkins"],
+        "Conditions": {
+          "Structure": "Fertile, well-drained soil",
+          "pH": "6 to 7",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 50,
+          "HumidityUpperBound": 70,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 15,
+          "TemperatureUpperBound": 30, 
+          "BestHumidityLowerBound": 60,
+          "BestHumidityUpperBound": 65,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 22.5,
+          "BestTemperatureUpperBound": 22.5
+        }
+      },
+      {
+        "Type": "Brassicas",
+        "Examples": ["Broccoli", "Cauliflower", "Brussels Sprouts"],
+        "Conditions": {
+          "Structure": "Fertile, well-drained soil",
+          "pH": "6 to 7.5",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 40,
+          "HumidityUpperBound": 70,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 10,
+          "TemperatureUpperBound": 24,
+          "BestHumidityLowerBound": 55,
+          "BestHumidityUpperBound": 60,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 17,
+          "BestTemperatureUpperBound": 17
+        }
+      },
+      {
+        "Type": "Alliums",
+        "Examples": ["Onions", "Garlic", "Leeks", "Shallots"],
+        "Conditions": {
+          "Structure": "Well-drained soil",
+          "pH": "5.5 to 7",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 30,
+          "HumidityUpperBound": 60,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 13,
+          "TemperatureUpperBound": 24,
+          "BestHumidityLowerBound": 45,
+          "BestHumidityUpperBound": 50,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 18.5,
+          "BestTemperatureUpperBound": 18.5
+        }
+      },
+      {
+        "Type": "Herbs",
+        "Examples": ["Parsley", "Thyme", "Sage", "Rosemary", "Mint"],
+        "Conditions": {
+          "Structure": "Well-drained, loamy soil",
+          "pH": "6 to 7",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 40,
+          "HumidityUpperBound": 70,
+          "SoilMoistureLowerBound": 40,
+          "SoilMoistureUpperBound": 60,
+          "TemperatureLowerBound": 15,
+          "TemperatureUpperBound": 24,
+          "BestHumidityLowerBound": 55,
+          "BestHumidityUpperBound": 60,
+          "BestSoilMoistureLowerBound": 50,
+          "BestSoilMoistureUpperBound": 50,
+          "BestTemperatureLowerBound": 19.5,
+          "BestTemperatureUpperBound": 19.5
+        }
+      },
+      {
+        "Type": "Berries",
+        "Examples": ["Strawberries", "Raspberries", "Blackberries", "Blueberries"],
+        "Conditions": {
+          "Structure": "Well-drained soil",
+          "pH": "5.5 to 6.5",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 40,
+          "HumidityUpperBound": 80,
+          "SoilMoistureLowerBound": 60,
+          "SoilMoistureUpperBound": 80,
+          "TemperatureLowerBound": 15,
+          "TemperatureUpperBound": 24,
+          "BestHumidityLowerBound": 60,
+          "BestHumidityUpperBound": 65,
+          "BestSoilMoistureLowerBound": 70,
+          "BestSoilMoistureUpperBound": 70,
+          "BestTemperatureLowerBound": 19.5,
+          "BestTemperatureUpperBound": 19.5
+        }
+      },
+      {
+        "Type": "Flowers (Edible and Ornamental)",
+        "Examples": ["Marigolds", "Nasturtiums", "Calendula", "Lavender", "Sunflowers"],
+        "Conditions": {
+          "Structure": "Well-drained soil",
+          "pH": "6 to 7",
+          "Light": "Full sun (6-8 hours/day)",
+          "HumidityLowerBound": 40,
+          "HumidityUpperBound": 70,
+          "SoilMoistureLowerBound": 40,
+          "SoilMoistureUpperBound": 60,
+          "BestHumidityLowerBound": 0,
+          "BestHumidityUpperBound": 0
+        
+        }
+    }
+    ]
+}
+  
