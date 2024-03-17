@@ -1,11 +1,17 @@
 
 body {
-  margin: 0;
+  display: contents;
   font-family: -apple-system, BlinkMacSystemFont, 'Julius Sans One', 'Hammersmith One', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* max-width: 400px; */
+  max-width: max-content;
+  align-items: center;
+  margin: 0px 0px 0px 0px;
+  
+  justify-content: center;
 }
 
 code {
