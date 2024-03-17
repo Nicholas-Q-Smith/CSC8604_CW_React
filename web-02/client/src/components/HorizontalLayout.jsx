@@ -6,6 +6,8 @@ import { useState } from "react";
 
 import closeIcon from "../assets/icons/close-icon.svg";
 
+import burgerMenu from "../assets/icons/burger-menu.svg";
+
 import './HorizontalLayout.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "w3-css";
@@ -41,7 +43,8 @@ function Layout () {
   return (
     <>
   <div>
-    <button onClick={()=> {setShow(!show)}}>Show/Hide</button>
+    <img src={burgerMenu} onClick={()=> {setShow(!show)}} className={"burgerMenu"}></img>
+    {/* <button onClick={()=> {setShow(!show)}}>Show/Hide</button> */}
   </div>
 
   {/* Shows or hides the side navigation bar */}
