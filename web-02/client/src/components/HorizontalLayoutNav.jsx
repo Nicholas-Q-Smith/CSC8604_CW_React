@@ -26,13 +26,6 @@ let isVisible = true;
 let isAutoUpdate = false;
 
 
-
-
-
-
-
-
-
 function hide() {
     isVisible = !isVisible;
 }
@@ -53,9 +46,9 @@ function Layout () {
 
   if(window.location.pathname === "/") {
     activeTab = 0;
-  } else if(window.location.pathname === "/layout1") {
+  } else if(window.location.pathname === "/sensors1") {
     activeTab = 1;
-  } else if(window.location.pathname === "/layout2") {
+  } else if(window.location.pathname === "/sensors2") {
     activeTab = 2;
   } else if(window.location.pathname === "/new-iter-home") {
     activeTab = 3;
@@ -102,13 +95,13 @@ function Layout () {
   
     <a onClick={()=> navigate('/')} class=
       {activeTab == 0 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Home</a>
-    <a onClick={()=> navigate('/layout1')} class=
+    <a onClick={()=> navigate('/sensors1')} class=
       {activeTab == 1 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 1</a>
-    <a onClick={()=> navigate('/layout2')} class=
+    <a onClick={()=> navigate('/sensors2')} class=
     {activeTab == 2 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 2</a>
-    <a onClick={()=> navigate('/new-iter-home')} class=
-    {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>New-Iter</a>
-    <div onClick={()=> {setShow(!show)}} className={'w3-bar-item w3-button bordered'}>
+    {/* <a onClick={()=> navigate('/new-iter-home')} class=
+    {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>New-Iter</a> */}
+    <div onClick={()=> {setShow(!show)}} className={'w3-bar-item w3-button bordered'}> 
     <p>Close Sidebar
     <img src={closeIcon} className={"closeIcon"}></img>
     </p>

@@ -7,8 +7,8 @@ import PlantTile from './tiles/PlantTile';
 
 import './RelevantPlants.css'
 import { Color } from 'devextreme-react/cjs/linear-gauge';
-import HomePage from '../iteration-02/HomePageNew';
-import HomePageNew from '../iteration-02/HomePageNew';
+import HomePage from '../iteration-02/HomePageNew2';
+import HomePageNew from '../iteration-02/HomePageNew2';
 
 import GetData from '../async/GetData';
 // import GetData from HomePageNew;
