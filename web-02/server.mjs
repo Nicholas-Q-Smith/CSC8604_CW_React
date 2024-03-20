@@ -35,6 +35,12 @@ var err;
 
 var resp;
 
+let lastHumidity = 0;
+
+let lastTemperature = 0;
+
+let lastSoilMoisture = 0;
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -88,6 +94,8 @@ app.get('/get-best-match', (req, res) => {
     const field1Values = feeds.map(feed => feed.field1);
 
     const field2Values = feeds.map(feed => feed.field2);
+
+    const field3Values = feeds.map(feed => feed.field3);
     
     // console.log("Working values: " + field1Values)
     
@@ -241,16 +249,35 @@ app.get('/sensors', (req, res) => {
 
     console.log("feeds " + JSON.stringify(feeds))
 
-    // console.log(objs)
+    // Validation logic for the sensor values
 
-    const field1Values = feeds.map(feed => feed.field1);
+    let field1Values = undefined;
 
-    const field2Values = feeds.map(feed => feed.field2);
+    let field2Values = undefined;
+
+    let field3Values = undefined;
+
+    if((feeds.map(feed => feed.field1)) <= 100) {
+        field1Values = feeds.map(feed => feed.field1);
+    } 
+
+    if(feeds.map(feed => feed.field2) <= 55) {
+        field2Values = feeds.map(feed => feed.field2);
+    }
+
+    if(feeds.map(feed => feed.field3) <= 100) {
+        field3Values = feeds.map(feed => feed.field3);
+    } else {
+        field3Values = 100; 
+    }
     
     console.log("Working values: " + field1Values + "" + field2Values)
     
+    lastHumidity = field1Values;
+    lastTemperature = field2Values;
+    lastSoilMoisture = field3Values;
 
-    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(field2Values)}`, sm: `${Number(50)}`})
+    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(field2Values)}`, sm: `${Number(field3Values)}`})
     // res.json({rh: `${Number(68)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
     
     });
