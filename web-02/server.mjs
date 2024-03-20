@@ -174,8 +174,8 @@ app.get('/get-best-match', (req, res) => {
 
         if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
               plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)
-              && range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
-                plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureUpperBound).includes(23)) {
+              || range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
+                plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureUpperBound).includes(48)) {
                 
             console.log("Match found: " + plant_env_match.PlantClassifications[iterable].Type)
             
