@@ -24,10 +24,6 @@ function Home(){
 
     return (
         <>
-        
-        <h1>Title - Main Home Page</h1>
-
-        <div class="content">
         <div class="container">
             <img src={require('./assets/plot-shapes/plot shapes-01.png')} alt="Image 1" className="image"
             onClick={() => navigate('sensors1')}/>
@@ -38,9 +34,7 @@ function Home(){
             <img src={require('./assets/plot shapes-04.png')} alt="Image 4" class="image"
             onClick={() => navigate('layout1')}/> */}
         </div>
-        </div>
         </>
-        
         );
     }
 
