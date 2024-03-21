@@ -273,11 +273,18 @@ app.get('/sensors', (req, res) => {
     
     console.log("Working values: " + field1Values + "" + field2Values)
     
-    lastHumidity = field1Values;
-    lastTemperature = field2Values;
-    lastSoilMoisture = field3Values;
+    if(field1Values != undefined) {
+      lastHumidity = field1Values;  
+    } else if(field2Values != undefined) {
+      lastTemperature = field2Values;
+    } else if(field3Values != undefined) {  
+      lastSoilMoisture = field3Values;
+    }
+    
+    
+    
 
-    res.json({rh: `${Number(field1Values)}`, tmp: `${Number(field2Values)}`, sm: `${Number(field3Values)}`})
+    res.json({rh: `${Number(lastHumidity)}`, tmp: `${Number(lastTemperature)}`, sm: `${Number(lastSoilMoisture)}`})
     // res.json({rh: `${Number(68)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
     
     });
@@ -294,6 +301,87 @@ app.get('/sensors', (req, res) => {
     
 
 })
+
+app.get('/sensors2', (req, res) => {
+  const filename = path.join(currentFolder, 'sensors.html')
+  https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=1
+  `, resp => {
+  let data = "";
+
+  // A chunk of data has been recieved.
+  resp.on("data", chunk => {
+    data += chunk;
+
+  const obj = JSON.parse(data)
+  
+  let startPoint = obj.feeds.at(0).entry_id;
+
+  let endPoint = obj.feeds.at(-1).entry_id;
+
+  console.log("Start point " + startPoint + " End point " + endPoint)
+  
+  
+  
+  
+  // for (const x in newObj) {
+  //     console.log("Iter vals " + x)
+  //     newText += x;
+  // }
+  console.log(obj)
+  
+  let feeds = obj.feeds;
+
+  console.log("feeds " + JSON.stringify(feeds))
+
+  // Validation logic for the sensor values
+
+  let field1Values = undefined;
+
+  let field2Values = undefined;
+
+  let field3Values = undefined;
+
+  if((feeds.map(feed => feed.field4)) <= 100) {
+      field1Values = feeds.map(feed => feed.field4);
+  } 
+
+  if(feeds.map(feed => feed.field5) <= 55) {
+      field2Values = feeds.map(feed => feed.field5);
+  }
+
+  if(feeds.map(feed => feed.field6) <= 100) {
+      field3Values = feeds.map(feed => feed.field6);
+  } else {
+      field3Values = 100; 
+  }
+  
+  console.log("Working values: " + field1Values + "" + field2Values)
+  
+  lastHumidity = field1Values;
+  lastTemperature = field2Values;
+  lastSoilMoisture = field3Values;
+
+  res.json({rh: `${Number(field1Values)}`, tmp: `${Number(field2Values)}`, sm: `${Number(field3Values)}`})
+  // res.json({rh: `${Number(11)}`, tmp: `${Number(field2Values)}`, sm: `${Number(field3Values)}`})
+  // res.json({rh: `${Number(68)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
+  
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on("end", () => {
+    let url = JSON.parse(data).message;
+        
+  });
+}).on("error", err => {
+  console.log("Error: " + err.message);
+});
+
+  
+
+})
+
+
+
 
 function range(start, end) {
   console.log("Start: " + start + " End: " + end)
