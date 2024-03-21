@@ -50,7 +50,7 @@ function Layout () {
     activeTab = 1;
   } else if(window.location.pathname === "/sensors2") {
     activeTab = 2;
-  } else if(window.location.pathname === "/new-iter-home") {
+  } else if(window.location.pathname === "/sensors3") {
     activeTab = 3;
   }
 
@@ -99,6 +99,8 @@ function Layout () {
       {activeTab == 1 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 1</a>
     <a onClick={()=> navigate('/sensors2')} class=
     {activeTab == 2 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 2</a>
+    <a onClick={()=> navigate('/sensors3')} class=
+    {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Example Plot</a>
     {/* <a onClick={()=> navigate('/new-iter-home')} class=
     {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>New-Iter</a> */}
     <div onClick={()=> {setShow(!show)}} className={'w3-bar-item w3-button bordered'}> 
