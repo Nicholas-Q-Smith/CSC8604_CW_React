@@ -15,8 +15,8 @@ import GetData from '../async/GetData';
 
 function RelevantPlants(props) {
 
-    
-    let {data, vals, plantvals} = GetData();
+    let plantvals = props.plantvals;
+    // let {data, vals, plantvals} = GetData();
     
     console.log(plantvals)
  
@@ -42,6 +42,7 @@ function RelevantPlants(props) {
     }
 
     console.log(plantsList);
+
 
     return (
         <>
