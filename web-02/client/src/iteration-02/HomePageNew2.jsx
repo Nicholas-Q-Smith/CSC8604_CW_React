@@ -19,6 +19,9 @@ import PlantTile from '../components/tiles/PlantTile';
 import RelevantPlants from '../components/RelevantPlants';
 
 import GetData from '../async/GetData';
+import GetData2 from '../async/GetData2';
+import SeasonsDisplay from '../components/SeasonsDisplay';
+
 
 let view1 = true;
 
@@ -63,7 +66,7 @@ let view2 = false;
 
 function HomePage2(){
 
-    let {data, vals, plantvals} = GetData();
+    let {data, vals, plantvals} = GetData2();
     
     // const [data, setData] = React.useState(null);
 
@@ -105,11 +108,16 @@ function HomePage2(){
 
         <hr class="rounded"></hr>
 
+        <SeasonsDisplay/>
+
+        <hr class="rounded"></hr>
+
         <DigitalTemp temp={Number(vals.tmp)}/>
 
         <hr class="rounded"></hr>
         
         <RelevantPlants plantvals={plantvals}/>
+
 
         </>
         

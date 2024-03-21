@@ -6,7 +6,7 @@ import Header from '../components/pageFormat/Header';
 
 import Footer from '../components/pageFormat/Footer';
 
-// import './HomePage.css';
+// import './HomePage2.css';
 
 import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
@@ -19,15 +19,14 @@ import PlantTile from '../components/tiles/PlantTile';
 import RelevantPlants from '../components/RelevantPlants';
 
 import GetData from '../async/GetData';
-import { FetchSensors } from '../async/FetchSensors';
+import GetData2 from '../async/GetData2';
+import GetDebugData from '../async/GetDebugData';
+import SeasonsDisplay from '../components/SeasonsDisplay';
+
 
 let view1 = true;
 
 let view2 = false;
-
-
-
-
 
 // function GetData() {
 
@@ -66,11 +65,9 @@ let view2 = false;
 // }
 
 
-function HomePage(){
+function HomePage3(){
 
-    let {data, vals, plantvals} = GetData();
-
-
+    let {data, vals, plantvals} = GetDebugData();
     
     // const [data, setData] = React.useState(null);
 
@@ -93,7 +90,7 @@ function HomePage(){
     // }, []);
 
     
-    // console.log(vals)
+    console.log(vals)
 
     if(view1) {    
 
@@ -104,9 +101,6 @@ function HomePage(){
 
         {/* <hr class="rounded-top"></hr> */}
 
-        {/* <FetchSensors/> */}
-
-
         <HumidityIndicator humidity={Number(vals.rh)}/>
 
         <hr class="rounded"></hr>
@@ -115,11 +109,16 @@ function HomePage(){
 
         <hr class="rounded"></hr>
 
+        <SeasonsDisplay/>
+
+        <hr class="rounded"></hr>
+
         <DigitalTemp temp={Number(vals.tmp)}/>
 
         <hr class="rounded"></hr>
         
         <RelevantPlants plantvals={plantvals}/>
+
 
         </>
         
@@ -132,4 +131,4 @@ function HomePage(){
     }
 
 
-export default HomePage;
+export default HomePage3;
