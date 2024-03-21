@@ -23,6 +23,7 @@ import HomePage from './iteration-01/HomePage';
 import HomePage2 from './iteration-01/HomePage2';
 import HomePageNew from './iteration-02/HomePageNew';
 import HomePageNew2 from './iteration-02/HomePageNew2';
+import HomePage3 from './iteration-02/HomePageNew3';
 
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route exact path="layout2" element={<HomePage2 />} /> */}
           <Route exact path="sensors1" element={<HomePageNew/>} />
           <Route exact path="sensors2" element={<HomePageNew2/>} />
+          <Route exact path="sensors3" element={<HomePage3/>} />
     </Routes>
   
   );
