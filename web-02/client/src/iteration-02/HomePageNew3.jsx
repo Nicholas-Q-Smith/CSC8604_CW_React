@@ -22,6 +22,7 @@ import GetData from '../async/GetData';
 import GetData2 from '../async/GetData2';
 import GetDebugData from '../async/GetDebugData';
 import SeasonsDisplay from '../components/SeasonsDisplay';
+import SeasonsDisplayDay from '../components/SeasonsDisplayDay';
 
 
 let view1 = true;
@@ -101,7 +102,7 @@ function HomePage3(){
 
         {/* <hr class="rounded-top"></hr> */}
 
-        <HumidityIndicator humidity={Number(vals.rh)}/>
+        <HumidityIndicator sensor={2} humidity={Number(vals.rh)}/>
 
         <hr class="rounded"></hr>
 
@@ -109,7 +110,7 @@ function HomePage3(){
 
         <hr class="rounded"></hr>
 
-        <SeasonsDisplay/>
+        <SeasonsDisplayDay/>
 
         <hr class="rounded"></hr>
 

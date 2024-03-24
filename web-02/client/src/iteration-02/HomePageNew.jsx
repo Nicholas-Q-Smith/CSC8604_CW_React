@@ -20,6 +20,7 @@ import RelevantPlants from '../components/RelevantPlants';
 
 import GetData from '../async/GetData';
 import { FetchSensors } from '../async/FetchSensors';
+import SeasonsDisplayDay from '../components/SeasonsDisplayDay';
 
 let view1 = true;
 
@@ -68,7 +69,7 @@ let view2 = false;
 
 function HomePage(){
 
-    let {data, vals, plantvals} = GetData();
+     let {data, vals, plantvals} = GetData();
 
 
     
@@ -107,7 +108,7 @@ function HomePage(){
         {/* <FetchSensors/> */}
 
 
-        <HumidityIndicator humidity={Number(vals.rh)}/>
+        <HumidityIndicator sensor={1} humidity={Number(vals.rh)}/>
 
         <hr class="rounded"></hr>
 
@@ -115,7 +116,11 @@ function HomePage(){
 
         <hr class="rounded"></hr>
 
-        <DigitalTemp temp={Number(vals.tmp)}/>
+        <SeasonsDisplayDay/>
+        
+        <hr class="rounded"></hr>
+
+        <DigitalTemp sensor={1}/>
 
         <hr class="rounded"></hr>
         
