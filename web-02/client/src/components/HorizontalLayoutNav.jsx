@@ -16,6 +16,8 @@ import updateIcon from '../assets/icons/auto-update-icon.svg';
 
 import SwitchToggle from './SwitchToggle'
 
+
+
 import './HorizontalLayoutNav.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "w3-css";
@@ -32,7 +34,8 @@ function hide() {
 
 
 
-function Layout () {
+
+function Layout ({ onToggle }) {
 
   let navigate = useNavigate();
 
@@ -40,7 +43,9 @@ function Layout () {
 
   const [show, setShow] = useState(false);
 
-  const [autoUpdate, setAutoUpdate] = useState(false);
+  
+
+  
 
   let visibility = "";
 
@@ -75,7 +80,7 @@ function Layout () {
           <div className={"autoUpdateContainer"}>
 
             
-              <SwitchToggle/>
+              <SwitchToggle onToggle={onToggle}/>
             
           </div>
           </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useState } from 'react';
+
 // import MaterialLayout from './components/MaterialLayout';
 
 import Header from '../components/pageFormat/Header';
@@ -67,12 +69,18 @@ let view2 = false;
 // }
 
 
-function HomePage(){
+function HomePage() {
 
-     let {data, vals, plantvals} = GetData();
+    let {data, vals, plantvals} = GetData();
 
-
+    const [autoUpdate, setAutoUpdate] = useState(true);
     
+    const toggleAutoUpdate = () => {
+      setAutoUpdate(!autoUpdate);
+      console.log("Toggle Switch Status: " + autoUpdate);
+    }
+    
+     
     // const [data, setData] = React.useState(null);
 
     // const [vals, setVals] = React.useState({});
@@ -101,7 +109,7 @@ function HomePage(){
     return (
         <>
         
-        <HorizontalLayoutNav/>
+        <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
 
         {/* <hr class="rounded-top"></hr> */}
 
@@ -134,7 +142,8 @@ function HomePage(){
       //other view 
 
     }
-    }
+  }
+    
 
 
 export default HomePage;
