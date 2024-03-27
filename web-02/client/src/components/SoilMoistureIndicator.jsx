@@ -16,13 +16,13 @@ function SoilMoistureIndicator (props) {
 
     let colour = '#000000';
 
-    if(props.moisture < 20) {
+    if(SM.sm < 20) {
         colour = '#fa3f32';
-    } else if(props.moisture <= 50) {
+    } else if(SM.sm <= 50) {
         colour = '#f7b731';
-    } else if(props.moisture <= 75) {
+    } else if(SM.sm <= 75) {
         colour = '#b3ff00';
-    } else if(props.moisture <= 100) {
+    } else if(SM.sm <= 100) {
         colour = '#00c417';
     }
 
@@ -91,7 +91,7 @@ function SoilMoistureIndicator (props) {
                 <MinorTick visible={true} />
             </Scale>
             <Export enabled={false} />
-            <Title text={"Soil Moisture: " + props.moisture + "%"}>
+            <Title text={"Soil Moisture: " + SM.sm + "%"}>
                 <Font size={28} family='Julius Sans One' />
             </Title>
         </LinearGauge>
