@@ -1,12 +1,8 @@
 import React from 'react';
 
-// import MaterialLayout from './components/MaterialLayout';
-
 import Header from '../components/pageFormat/Header';
 
 import Footer from '../components/pageFormat/Footer';
-
-// import './HomePage2.css';
 
 import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
@@ -23,83 +19,21 @@ import GetData2 from '../async/GetData2';
 import SeasonsDisplay from '../components/SeasonsDisplay';
 import SeasonsDisplayDay from '../components/SeasonsDisplayDay';
 
-
 let view1 = true;
 
 let view2 = false;
 
-// function GetData() {
 
-//     const [data, setData] = React.useState(null);
-
-//     const [vals, setVals] = React.useState({});
-
-//     const [plantvals, setPlantVals] = React.useState({});
-
-//     React.useEffect(() => {
-//       async function fetchStatus() {
-//         const response = await fetch("/api");
-//         const json = await response.json();
-//         setData(json.message);
-//       }
-
-//       async function fetchSensors() {
-//         const response = await fetch("/sensors");
-//         const json = await response.json();
-//         setVals(json);
-//       }
-
-//       async function fetchBestMatch() {
-//         const response = await fetch("/get-best-match");
-//         const json = await response.json();
-//         setPlantVals(json);
-//       }
-//       fetchStatus();
-//       fetchSensors();
-//       fetchBestMatch();
-//     } , []);
-
-//     return {data, vals, plantvals};
-
-
-// }
-
-
-function HomePage2(){
+function HomePage2() {
 
     let {data, vals, plantvals} = GetData2();
-    
-    // const [data, setData] = React.useState(null);
 
-    // const [vals, setVals] = React.useState({});
-
-    // const [plantvals, setPlantVals] = React.useState({});
-
-    // React.useEffect(() => {
-    // fetch("/api")
-    //   .then((res) => res.json())
-    //   .then((data) => setData(data.message))
-      
-    // fetch("/sensors")
-    //   .then((res) => res.json())
-    //   .then((vals) => setVals(vals))
-    
-    // fetch("/get-best-match")
-    //   .then((res) => res.json())
-    //   .then((plantvals) => setPlantVals({items: plantvals}))
-    // }, []);
-
-    
-    console.log(vals)
-
-    if(view1) {    
+    console.log(vals);
 
     return (
         <>
         
         <HorizontalLayoutNav/>
-
-        {/* <hr class="rounded-top"></hr> */}
 
         <HumidityIndicator sensor={2} humidity={Number(vals.rh)}/>
 
@@ -119,15 +53,9 @@ function HomePage2(){
         
         <RelevantPlants plantvals={plantvals}/>
 
-
         </>
         
         );
-    } else if(view2) {
-
-      //other view 
-
-    }
     }
 
 

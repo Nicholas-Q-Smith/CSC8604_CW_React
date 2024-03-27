@@ -28,52 +28,56 @@ let view1 = true;
 
 let view2 = false;
 
+/*
+First plot home page. 
+*/
+
 function HomePage() {
 
 
+    /*
+    Auto update functionality, tied to child component
+    of update toggle within navbar.
+    */
 
-    let {data, vals, plantvals} = GetData();
+    let {data, vals, plantvals} = GetData();;
 
     const [autoUpdate, setAutoUpdate] = useState(false);
+    
+
+    //Debug console message 
     
     const toggleAutoUpdate = () => {
       setAutoUpdate(!autoUpdate);
       console.log("Toggle Switch Status: " + autoUpdate);
     }
 
-    if(view1) {    
+  return (
+      <>
+      
+      <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
 
-    return (
-        <>
-        
-        <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
+      <HumidityIndicator sensor={1} isAutoUpdating={autoUpdate}/>
 
-        <HumidityIndicator sensor={1} isAutoUpdating={autoUpdate} humidity={Number(vals.rh)}/>
+      <hr class="rounded"></hr>
 
-        <hr class="rounded"></hr>
+      <SoilMoistureIndicator sensor={1} isAutoUpdating={autoUpdate}/>
 
-        <SoilMoistureIndicator sensor={1} isAutoUpdating={autoUpdate} moisture={Number(vals.sm)}/>
+      <hr class="rounded"></hr>
 
-        <hr class="rounded"></hr>
+      <SeasonsDisplayDay/>
+      
+      <hr class="rounded"></hr>
 
-        <SeasonsDisplayDay/>
-        
-        <hr class="rounded"></hr>
+      <DigitalTemp sensor={1} isAutoUpdating={autoUpdate}/>
 
-        <DigitalTemp sensor={1} isAutoUpdating={autoUpdate}/>
+      <hr class="rounded"></hr>
+      
+      <RelevantPlants plantvals={plantvals}/>
 
-        <hr class="rounded"></hr>
-        
-        <RelevantPlants plantvals={plantvals}/>
-
-        </>
-        
-        );
-    } else if(view2) {
-
-      //other view 
-
-    }
+      </>
+      
+      );
   }
     
 
