@@ -48,7 +48,7 @@ function HomePage() {
         
         <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
 
-        <HumidityIndicator sensor={1} humidity={Number(vals.rh)}/>
+        <HumidityIndicator sensor={1} isAutoUpdating={autoUpdate} humidity={Number(vals.rh)}/>
 
         <hr class="rounded"></hr>
 

@@ -41,14 +41,26 @@ function HumidityIndicator (props) {
       be significantly reduced in the future for energy efficiency.
       */
       useEffect(() => {
-        fetchHum();
-          let timerId = setInterval(() => {
-              fetchHum(); 
-          }, 30000);
-  
-      return () => clearInterval(timerId);
-  
-  }, []); 
+
+        fetchHum(Number(props.sensor));
+        
+        if(props.isAutoUpdating) {
+            console.log("Humidity updating")
+        } else {
+            console.log("Humidity not updating")
+        }
+
+        let timerId;
+        if(props.isAutoUpdating) {
+            timerId = setInterval(() => {
+                fetchHum(Number(props.sensor)); 
+            }, 30000);
+
+        }
+        return () => clearInterval(timerId);
+
+
+      }, [props.isAutoUpdating, props.sensor]); 
 
 
 
