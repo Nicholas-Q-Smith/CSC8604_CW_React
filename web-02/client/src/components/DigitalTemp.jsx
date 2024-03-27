@@ -33,14 +33,26 @@ function DigitalTemp(props) {
         be significantly reduced in the future for energy efficiency.
         */
         useEffect(() => {
+
             fetchTemp(Number(props.sensor));
-            let timerId = setInterval(() => {
-                fetchTemp(Number(props.sensor)); 
-            }, 30000);
+            
+            if(props.isAutoUpdating) {
+                console.log("Temp updating")
+            } else {
+                console.log("Temp not updating")
+            }
+
+            let timerId;
+            if(props.isAutoUpdating) {
+                timerId = setInterval(() => {
+                    fetchTemp(Number(props.sensor)); 
+                }, 30000);
+
+            }
+            return () => clearInterval(timerId);
+
     
-        return () => clearInterval(timerId);
-    
-    }, []); 
+    }, [props.isAutoUpdating, props.sensor]); 
     
     /*
     Custom label setting if desired

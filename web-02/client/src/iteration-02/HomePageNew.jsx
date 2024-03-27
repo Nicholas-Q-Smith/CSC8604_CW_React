@@ -28,81 +28,18 @@ let view1 = true;
 
 let view2 = false;
 
-
-
-
-
-// function GetData() {
-
-//     const [data, setData] = React.useState(null);
-
-//     const [vals, setVals] = React.useState({});
-
-//     const [plantvals, setPlantVals] = React.useState({});
-
-//     React.useEffect(() => {
-//       async function fetchStatus() {
-//         const response = await fetch("/api");
-//         const json = await response.json();
-//         setData(json.message);
-//       }
-
-//       async function fetchSensors() {
-//         const response = await fetch("/sensors");
-//         const json = await response.json();
-//         setVals(json);
-//       }
-
-//       async function fetchBestMatch() {
-//         const response = await fetch("/get-best-match");
-//         const json = await response.json();
-//         setPlantVals(json);
-//       }
-//       fetchStatus();
-//       fetchSensors();
-//       fetchBestMatch();
-//     } , []);
-
-//     return {data, vals, plantvals};
-
-
-// }
-
-
 function HomePage() {
+
+
 
     let {data, vals, plantvals} = GetData();
 
-    const [autoUpdate, setAutoUpdate] = useState(true);
+    const [autoUpdate, setAutoUpdate] = useState(false);
     
     const toggleAutoUpdate = () => {
       setAutoUpdate(!autoUpdate);
       console.log("Toggle Switch Status: " + autoUpdate);
     }
-    
-     
-    // const [data, setData] = React.useState(null);
-
-    // const [vals, setVals] = React.useState({});
-
-    // const [plantvals, setPlantVals] = React.useState({});
-
-    // React.useEffect(() => {
-    // fetch("/api")
-    //   .then((res) => res.json())
-    //   .then((data) => setData(data.message))
-      
-    // fetch("/sensors")
-    //   .then((res) => res.json())
-    //   .then((vals) => setVals(vals))
-    
-    // fetch("/get-best-match")
-    //   .then((res) => res.json())
-    //   .then((plantvals) => setPlantVals({items: plantvals}))
-    // }, []);
-
-    
-    // console.log(vals)
 
     if(view1) {    
 
@@ -110,11 +47,6 @@ function HomePage() {
         <>
         
         <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
-
-        {/* <hr class="rounded-top"></hr> */}
-
-        {/* <FetchSensors/> */}
-
 
         <HumidityIndicator sensor={1} humidity={Number(vals.rh)}/>
 
@@ -128,7 +60,7 @@ function HomePage() {
         
         <hr class="rounded"></hr>
 
-        <DigitalTemp sensor={1}/>
+        <DigitalTemp sensor={1} isAutoUpdating={autoUpdate}/>
 
         <hr class="rounded"></hr>
         
