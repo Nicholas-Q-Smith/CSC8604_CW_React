@@ -1,0 +1,20 @@
+.closeIcon {
+    max-width: 64px;
+    max-height: 64px;
+    padding: 0px 0px 0px 15px;
+}
+
+.bordered {
+    border-style: solid;
+    margin: 0px 0px 0px 0px;
+}
+
+.burgerMenu {
+    max-width: 64px;
+    max-height: 64px;
+    padding: 10px 0px 0px 0px;
+}
+
+.burgerContainer {
+    padding: 0px 0px 0px 10px;
+}
