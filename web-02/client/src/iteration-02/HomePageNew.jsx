@@ -52,7 +52,7 @@ function HomePage() {
 
         <hr class="rounded"></hr>
 
-        <SoilMoistureIndicator moisture={Number(vals.sm)}/>
+        <SoilMoistureIndicator sensor={1} isAutoUpdating={autoUpdate} moisture={Number(vals.sm)}/>
 
         <hr class="rounded"></hr>
 
