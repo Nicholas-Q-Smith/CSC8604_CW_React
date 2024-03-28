@@ -60,7 +60,6 @@ function HomePage() {
       <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
 
 
-      <Graph></Graph>
 
       <HumidityIndicator sensor={1} isAutoUpdating={autoUpdate}/>
 
