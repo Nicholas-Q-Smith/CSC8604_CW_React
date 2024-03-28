@@ -24,6 +24,8 @@ import GetData from '../async/GetData';
 import { FetchSensors } from '../async/FetchSensors';
 import SeasonsDisplayDay from '../components/SeasonsDisplayDay';
 
+import Graph from '../components/Graph';
+
 let view1 = true;
 
 let view2 = false;
@@ -56,6 +58,9 @@ function HomePage() {
       <>
       
       <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
+
+
+      <Graph></Graph>
 
       <HumidityIndicator sensor={1} isAutoUpdating={autoUpdate}/>
 

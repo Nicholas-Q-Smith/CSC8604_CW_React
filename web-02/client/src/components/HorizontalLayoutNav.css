@@ -39,6 +39,16 @@
 
 }
 
+.graphContainer {
+    padding: 10px 0px 0px 0px;
+}
+
+.graphIcon {
+    max-width: 64px;
+    max-height: 64px;
+
+}
+
 .autoUpdateContainer {
     padding: 10px 0px 0px 0px;
 }
@@ -53,7 +63,7 @@
 .navgrid {
     display: grid;
     grid-auto-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin:0 auto;
     max-width: 400px;
 }

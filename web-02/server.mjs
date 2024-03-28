@@ -530,7 +530,7 @@ app.get('/sensors', (req, res) => {
     
 
     // res.json({rh: `${Number(lastHumidity)}`, tmp: `${Number(lastTemperature)}`, sm: `${Number(lastSoilMoisture)}`})
-    res.json({rh: `${Number(80)}`, tmp: `${Number(23)}`, sm: `${Number(50)}`})
+    res.json({rh: `${Number(11)}`, tmp: `${Number(5)}`, sm: `${Number(50)}`})
     
     });
 

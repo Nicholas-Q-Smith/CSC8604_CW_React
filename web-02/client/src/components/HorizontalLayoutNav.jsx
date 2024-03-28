@@ -14,6 +14,8 @@ import homeMenu from "../assets/icons/home-menu-icon.svg";
 
 import updateIcon from '../assets/icons/auto-update-icon.svg';
 
+import graphIcon from '../assets/icons/graph-icon.svg';
+
 import SwitchToggle from './SwitchToggle'
 
 
@@ -66,6 +68,10 @@ function Layout ({ onToggle }) {
   <div class="navgrid"> 
           <div className={"burgerContainer"}>
             <img className={"burgerMenu"} src={burgerMenu}onClick={()=> {setShow(!show)}}></img>
+          </div>
+
+          <div className={"graphContainer"}>
+            <img className={"graphIcon"} src={graphIcon} onClick={()=> navigate('/graph')}/>
           </div>
 
           <div className={"homeContainer"}>
