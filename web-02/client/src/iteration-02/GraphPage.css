@@ -1,0 +1,19 @@
+.dropDown {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.graphs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dropDownBox {
+    width: '200px';
+    height: '50px';
+}
