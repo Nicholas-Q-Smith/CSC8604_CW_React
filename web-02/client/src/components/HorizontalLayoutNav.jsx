@@ -1,8 +1,4 @@
-import { Outlet, Link, useNavigate, useLocation} from "react-router-dom";
-import Tab from 'react-bootstrap/Tabs';
-import Tabs from 'react-bootstrap/Tabs';
-
-import Switch from "react-switch";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -18,24 +14,17 @@ import graphIcon from '../assets/icons/graph-icon.svg';
 
 import SwitchToggle from './SwitchToggle'
 
-
-
 import './HorizontalLayoutNav.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
+
 import "w3-css";
-import { Component } from "devextreme-react/cjs/core/component";
 
 let isVisible = true;
 
-let isAutoUpdate = false;
 
-
+//hide the navbar manually if required
 function hide() {
     isVisible = !isVisible;
 }
-
-
-
 
 function Layout ({ onToggle }) {
 
@@ -43,13 +32,9 @@ function Layout ({ onToggle }) {
 
   let activeTab = 1;
 
+
+  //react hook to show or hide the sidebar
   const [show, setShow] = useState(false);
-
-  
-
-  
-
-  let visibility = "";
 
   if(window.location.pathname === "/") {
     activeTab = 0;
@@ -61,8 +46,7 @@ function Layout ({ onToggle }) {
     activeTab = 3;
   }
 
-  
-
+  //First section is top navigation bar
   return (
     <>
   <div class="navgrid"> 
@@ -85,22 +69,12 @@ function Layout ({ onToggle }) {
 
           <div className={"autoUpdateContainer"}>
 
-            
               <SwitchToggle onToggle={onToggle}/>
             
           </div>
           </div>
-          
-          
-          {/* <li><a href="#">News</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">About</a></li> */}
-  
-        
-    
-
-
-  {/* Shows or hides the side navigation bar */}
+   
+  {/* Second section includes JSX to show or hide the side navigation bar */}
   {show && <> 
   <div style={!isVisible ? {display: "none"} : {display: "block"}} className={"w3-sidebar w3-bar-block w3-border w3-white w3-xxlarge w3-mobile "}>
   
@@ -112,24 +86,17 @@ function Layout ({ onToggle }) {
     {activeTab == 2 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Plot 2</a>
     <a onClick={()=> navigate('/sensors3')} class=
     {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>Example Plot</a>
-    {/* <a onClick={()=> navigate('/new-iter-home')} class=
-    {activeTab == 3 ? "w3-bar-item w3-button w3-padding-16 w3-red" : "w3-bar-item w3-button w3-padding-16 w3-white"}>New-Iter</a> */}
     <div onClick={()=> {setShow(!show)}} className={'w3-bar-item w3-button bordered'}> 
     <p>Close Sidebar
     <img src={closeIcon} className={"closeIcon"}></img>
     </p>
     </div>
-    
-    
-    
+  
   </div>
   </>
   }
-
-    
     </>
   );
-  
 }
 
 export default Layout;
