@@ -1,5 +1,3 @@
-/* container */
-
 .header {
     text-align: center;
     font-family: 'Julius Sans One';
@@ -16,7 +14,6 @@
     max-width: 400px;
 }
 
-/* columns */
 .three-columns-grid > * {
     padding:1rem;
 }
@@ -34,6 +31,5 @@
 }
 
 .Collapsible {
-    /* background-color: rgb(25, 49, 106); */
     border-style: dotted;
 }
