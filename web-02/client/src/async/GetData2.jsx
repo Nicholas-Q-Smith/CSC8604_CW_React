@@ -1,16 +1,27 @@
 import React from "react";
 
 
+/*
+Getting sensor data specifically for plot 2.
+*/
+
 export default function GetData2() {
+
+
+    // for getting api verification
     const [data, setData] = React.useState(null);
 
+
+    // for getting sensor data JSON object
     const [vals, setVals] = React.useState({});
 
-    const [vals2, setVals2] = React.useState({});
-
+    // for getting plant data JSON object
     const [plantvals, setPlantVals] = React.useState({});
 
     React.useEffect(() => {
+
+
+      //api verification
       async function fetchStatus() {
         const response = await fetch("/api");
         const json = await response.json();
@@ -18,27 +29,19 @@ export default function GetData2() {
       }
 
       
-
+      //sensor data
       async function fetchSensors() {
         const response = await fetch("/sensors2");
         const json = await response.json();
         setVals(json);
       }
 
-      
-
-      // async function fetchBestMatch() {
-      //   const response = await fetch("/get-best-match");
-      //   const json = await response.json();
-      //   setPlantVals({items: plantvals});
-       
-      // }
-
+      //plant data
       async function fetchBestMatch() {
         try {
           const response = await fetch("/get-best-match2");
           const json = await response.json();
-          setPlantVals({items: json}); // Use `json` here instead of `plantvals`
+          setPlantVals({items: json}); 
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -50,6 +53,7 @@ export default function GetData2() {
       fetchSensors();
       fetchBestMatch();
     } , []);
-    console.log("Returning: " + data, vals, plantvals);
+    
+    //returning all data together
     return {data, vals, plantvals};
 }
