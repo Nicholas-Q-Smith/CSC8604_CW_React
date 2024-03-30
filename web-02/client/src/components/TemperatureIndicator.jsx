@@ -4,6 +4,11 @@ import {
   LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator
 } from 'devextreme-react/linear-gauge';
 
+/* Older sensor, but left in for 
+*  demonstration purposes in case 
+   of future use
+*/
+
 function TemperatureIndicator (props) {
 return (
     <LinearGauge

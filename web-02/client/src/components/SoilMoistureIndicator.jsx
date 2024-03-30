@@ -16,6 +16,10 @@ function SoilMoistureIndicator (props) {
 
     let colour = '#000000';
 
+    /*Defines the colour of the gauge based on the 
+    value of the soil moisture
+    */
+
     if(SM.sm < 20) {
         colour = '#fa3f32';
     } else if(SM.sm <= 50) {
@@ -47,7 +51,12 @@ function SoilMoistureIndicator (props) {
         } 
     }
 
-
+    /* This sets the auto-update interval for the sensor data.
+      We have used 30 seconds as it is fetched every 30 seconds from 
+      the sensors in our demonstration, but this would most likely
+      be significantly reduced in the future for energy efficiency.
+      */
+     
     useEffect(() => {
 
         fetchSM(Number(props.sensor));
