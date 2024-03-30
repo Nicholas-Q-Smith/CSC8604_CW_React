@@ -12,7 +12,7 @@ import RelevantPlants from '../components/RelevantPlants';
 
 import GetData from '../async/GetData';
 import GetData2 from '../async/GetData2';
-import SeasonsDisplay from '../components/SeasonsDisplay';
+
 import SeasonsDisplayDay from '../components/SeasonsDisplayDay';
 
 let view1 = true;
