@@ -12,7 +12,6 @@ import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
 
 
 
-import Layout from './components/Layout';
 import Home from './Home';
 
 import HomePageNew from './iteration-02/HomePageNew';

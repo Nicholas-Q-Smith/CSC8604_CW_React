@@ -3,7 +3,7 @@ import React from 'react';
 import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';
-import Layout from '../components/Layout';
+
 import HorizontalLayout from '../components/HorizontalLayout';
 import HorizontalLayoutNav from '../components/HorizontalLayoutNav';
 import DigitalTemp from '../components/DigitalTemp';
