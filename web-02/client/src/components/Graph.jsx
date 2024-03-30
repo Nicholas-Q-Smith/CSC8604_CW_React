@@ -1,7 +1,17 @@
 import React from "react";
 
+/*
+Function takes props to determine which graph to display
+either 1 for plot 1 graphs, or 2 for plot 2 graphs.
+This utilises hard-coded iframes from ThingSpeak.
+This will be changed to be more dynamic in the future, and 
+expandable without mandating hard-coding, but serves as an 
+example for the demonstration perfectly well.
+*/
+
 export default function Graph(props) {
 
+    //Plot 1 iframes
     if(props.activeTab == 1) {
 
         return (
@@ -21,6 +31,8 @@ export default function Graph(props) {
 
             </div>
         );
+
+    //Plot 2 iframes
     } else if(props.activeTab == 2) {
         return (
             <>
