@@ -1,27 +1,14 @@
 import React from 'react';
 
+//use of Collapsible for collapsible item for each plant tile
+
 import Collapsible from 'react-collapsible';
+
+//stylesheet import
 
 import './PlantTile.css';
 
-// import brassicas from '../../assets/plant-tiles/plot shapes-11.png';
-
-// import root_veg from '../../assets/plant-tiles/plot shapes-10.png';
-
-// import leafy_greens from '../../assets/plant-tiles/plot shapes-07.png';
-
-// import legumes from '../../assets/plant-tiles/plot shapes-07.png';
-
-// import fruiting_veg from '../../assets/plant-tiles/plot shapes-09.png';
-
-// import alliums from '../../assets/plant-tiles/plot shapes-12.png';
-
-// import herbs from '../../assets/plant-tiles/plot shapes-08.png';
-
-// import berries from '../../assets/plant-tiles/plot shapes-06.png';
-
-// import flowers from '../../assets/plant-tiles/plot shapes-05.png';
-
+//imports for all plant logos
 
 import brassicas from '../../assets/plant-tiles-new/brassicas.png';
 
@@ -48,7 +35,12 @@ import collapse from '../../assets/icons/compress.png';
 import CollapsingIcon from '../CollapsingIcon';
 
 
-
+/* Mapping of plant name strings to each logo
+When utilising a DBMS in a later iteration, this will possibly be 
+replaced witheither a query or at the very least a primary key to 
+ensure integrity, but a string name is more than sufficient for this
+example system, allowing for easy access to the correct logos.
+*/
 
 let logos = {'Root Vegetables': root_veg,
             'Leafy Greens': leafy_greens,
@@ -60,19 +52,13 @@ let logos = {'Root Vegetables': root_veg,
             'Berries': berries,
             'Flowers (Edible and Ornamental)': flowers};
 
-
-            
-
-function InvertCollapse() {
-
-
-}
+/*Main function, defining a plant tile component with props
+ of each plant type, examples, structure, pH and light requirements
+*/
 
 function PlantTile(props) {
     
     let typ = props.typ;
-
-    console.log(typ)
 
     let examples = props.examples;
 
@@ -84,26 +70,17 @@ function PlantTile(props) {
 
     let subitems = [];
 
-    console.log(examples[0]);
-
-    
-
+    //Iterating through examples to create a list of example plants
     for(let index = 0; index < examples.length; index++) {
-        console.log(examples[index]);
         subitems.push(<p>{examples[index]}</p>);
     }
-    // console.log(JSON.parse(examples));
+    
 
-    // for (let i = 0; i < examples.length; i++) {
-    //     subitems.push(<p>{examples[i]}</p>);
-    // }
-    console.log(logos[typ]);
+    //Returning the plant tile component with all the necessary information
     return (
         <>
         <div className={'plant_component'}>
         <div className={'title_logo'}>
-
-            
             <div className={"two_column_layout"}>
                 <div className={'element1'}>
                     <img src={logos[typ]} alt="Image 1" className="type_image"/>
@@ -118,7 +95,6 @@ function PlantTile(props) {
                                     <p className={"expandLabel"}>{typ}</p>
                                     </div>
                                 <div className={"right"}>
-                                    {/* <img class={'toggle_icon'} src={expand}/> */}
                                     <CollapsingIcon isCollapsed={InvertCollapse()}/>
                                 </div>
                                     </div>
@@ -142,22 +118,16 @@ function PlantTile(props) {
                             <p>{light}</p>
                         </div>
                     </div>
-                    </Collapsible>
+                        </Collapsible>
                     </div>
-                    <div className={'right'}>
-                        
-                    </div>
+                    <div className={'right'}>   
                     </div>
                 </div>
             </div>
-
-            
-            
-        
-            
-        </div>
-        </div>
-        </>
+        </div>  
+    </div>
+</div>
+</>
     );
 }
 
