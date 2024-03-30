@@ -8,19 +8,13 @@ import './fonts/JuliusSansOne-Regular.ttf';
 
 import reportWebVitals from './reportWebVitals';
 
-import Header from './components/pageFormat/Header';
-
-import { LinearGaugeComponent } from '@syncfusion/ej2-react-lineargauge'
-
-import { IGRLinearGaugeModule, IgrLinearGauge } from 'igniteui-react-gauges';
 import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
 
 
 
 import Layout from './components/Layout';
 import Home from './Home';
-import HomePage from './iteration-01/HomePage';
-import HomePage2 from './iteration-01/HomePage2';
+
 import HomePageNew from './iteration-02/HomePageNew';
 import HomePageNew2 from './iteration-02/HomePageNew2';
 import HomePage3 from './iteration-02/HomePageNew3';

@@ -1,9 +1,5 @@
 import React from 'react';
 
-import Header from '../components/pageFormat/Header';
-
-import Footer from '../components/pageFormat/Footer';
-
 import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
 import TemperatureIndicator from '../components/TemperatureIndicator';

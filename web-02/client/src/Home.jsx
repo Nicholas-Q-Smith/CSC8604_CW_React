@@ -2,9 +2,7 @@ import React from 'react';
 
 import { useNavigate, Route, Routes } from "react-router-dom";
 
-import Header from './components/pageFormat/Header';
 
-import Footer from './components/pageFormat/Footer';
 
 import './Home.css';
 
