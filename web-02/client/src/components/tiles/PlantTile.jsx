@@ -131,4 +131,8 @@ function PlantTile(props) {
     );
 }
 
+function InvertCollapse() {
+    return true;
+}
+
 export default PlantTile;
