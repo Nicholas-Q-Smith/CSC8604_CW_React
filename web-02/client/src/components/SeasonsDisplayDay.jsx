@@ -8,23 +8,28 @@ import '../font.css';
 
 function SeasonsDisplayDay () {
 
+    /* Defines a new date Object, and from this, we can
+    ensure that we get the current month and day of the year
+    to allow us to calculate the season from this information.
+    */
     const d = new Date();
 
     let month = d.getMonth();
-    
-
     let now = new Date();
     let start = new Date(now.getFullYear(), 0, 0);
     let diff = now - start;
     let oneDay = 1000 * 60 * 60 * 24;
     let day = Math.floor(diff / oneDay);
     
-
     const currentMonthLabel = new Date().toLocaleString('en-US', { month: 'long' });
     console.log(currentMonthLabel);
 
     let season = undefined;
 
+
+    /* The logic for this function is hard coded for this case
+    allowing determination of the season based on the month
+    */
     if(month < 2 || month == 11 || month == 12) {
         season = 'Winter';
     } else if(month >= 2 && month < 5) {
@@ -35,14 +40,9 @@ function SeasonsDisplayDay () {
         season = 'August';
     }
     
-    
-    
-
-
-
-
-
-
+    /* Returns the Linear Gauge component with the season
+    *  as the title and the day of the year as the value
+    */
     return (
         <LinearGauge
             id="gauge"
@@ -57,19 +57,13 @@ function SeasonsDisplayDay () {
         <ValueIndicator color={"black"}/>
             <Scale
                 visible={false}
-                
                 startValue={0}
                 endValue={365}
                 tickInterval={30}
-                // minorTickInterval={0.625}
                 minorTick={false}
                 majorTick={false}
-                
             >
-
-                
                 <Tick visible={false} />
-                
             </Scale>
             <Export enabled={false} />
             <Title text={"Season: " + season}>
