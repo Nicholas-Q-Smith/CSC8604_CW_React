@@ -8,22 +8,28 @@ import Dropdown from 'react-dropdown';
 
 import './GraphPage.css';
 
+/* Page displaying graph components
+passing the active tab to the graph component
+to determine which graph to display.
+This presently does not automatically 
+detect the number of graphs to display,
+but determines it from the dropdown menu.
+Utilisation of React router 
+to determine which graph to display will 
+be implemented in the future.
+*/
+
 export default function GraphPage() {
     
     let activeTab = 1;
+
+    //Default state is 1.
 
     const [value, setValue] = React.useState(1);
 
     const handleChange = (event) => {
         setValue(event.target.value);
     }
-
-    
-    // if(window.location.pathname == "/sensors1") {
-    //     activeTab = 1;
-    // } else if(window.location.pathname == "/sensors2") {
-    //     activeTab = 2;
-    // }
 
     return (
         <>

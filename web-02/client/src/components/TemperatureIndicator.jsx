@@ -9,6 +9,11 @@ import {
    of future use
 */
 
+
+/*
+Component for displaying temperature data in a linear guage.
+*/
+
 function TemperatureIndicator (props) {
 return (
     <LinearGauge

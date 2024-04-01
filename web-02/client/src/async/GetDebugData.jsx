@@ -1,12 +1,19 @@
 import React from "react";
 
 
-export default function GetData2() {
+/*
+Returns all the debug data from the server
+Fulfils the /get-all-matches endpoint
+The live data is fetched from 
+sensor 2 for the humidity, soil moisture and temperature
+simply for the sake of demonstration.
+Plantvals returns all plants in the database.
+*/
+
+export default function GetDebugData() {
     const [data, setData] = React.useState(null);
 
     const [vals, setVals] = React.useState({});
-
-    const [vals2, setVals2] = React.useState({});
 
     const [plantvals, setPlantVals] = React.useState({});
 
@@ -17,34 +24,21 @@ export default function GetData2() {
         setData(json.message);
       }
 
-      
-
       async function fetchSensors() {
         const response = await fetch("/sensors2");
         const json = await response.json();
         setVals(json);
       }
 
-      
-
-      // async function fetchBestMatch() {
-      //   const response = await fetch("/get-best-match");
-      //   const json = await response.json();
-      //   setPlantVals({items: plantvals});
-       
-      // }
-
       async function fetchBestMatch() {
         try {
           const response = await fetch("/get-all-matches");
           const json = await response.json();
-          setPlantVals({items: json}); // Use `json` here instead of `plantvals`
+          setPlantVals({items: json}); 
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       }
-
-      
 
       fetchStatus();
       fetchSensors();

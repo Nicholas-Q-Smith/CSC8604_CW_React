@@ -6,6 +6,10 @@ import {
 
 import '../font.css';
 
+/*
+Component for displaying season data in a linear guage.
+*/
+
 function SeasonsDisplayDay () {
 
     /* Defines a new date Object, and from this, we can

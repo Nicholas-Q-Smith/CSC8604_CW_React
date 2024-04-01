@@ -3,6 +3,10 @@ import './DigitalTemp.css';
 
 import "../fonts/HammersmithOne-Regular.ttf";
 
+/*
+Component for displaying temperature data in a digital format.
+*/
+
 function DigitalTemp(props) {
 
     const [temp, setTemp] = React.useState({});

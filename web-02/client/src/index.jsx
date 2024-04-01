@@ -10,8 +10,6 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
 
-
-
 import Home from './Home';
 
 import HomePageNew from './iteration-02/HomePageNew';
@@ -21,16 +19,17 @@ import GraphView from './components/Graph';
 import GraphPage from './iteration-02/GraphPage';
 
 
-export default function App() {
+/*
+The App component is the main component of the application.
+It is responsible for rendering the different pages of the application
+*/
 
-  
+export default function App() {
 
   return(
   
     <Routes>
           <Route exact path="/" element={<Home />}/>
-          {/* <Route exact path="layout1" element={<HomePage />} />
-          <Route exact path="layout2" element={<HomePage2 />} /> */}
           <Route exact path="sensors1" element={<HomePageNew/>} />
           <Route exact path="sensors2" element={<HomePageNew2/>} />
           <Route exact path="sensors3" element={<HomePage3/>} />
@@ -40,6 +39,10 @@ export default function App() {
   );
 }
 
+/*
+Renders the App component from above, wrapping it in a BrowserRouter
+to allow for routing between different pages.
+*/
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
