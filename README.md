@@ -70,4 +70,5 @@ The sensor values will be displayed on each Plot page, and are respective to eac
 sensor array which will be located in each plot, and upload its data to ThingSpeak.
 
 Plot 3 is a debug page, and will upload __all__ plant types to it in order to demonstrate
-functionality with the average value determination being difficult to replicate.
+functionality with the average value determination being difficult to replicate. It displays
+values from Plot 2 for the purpose of demonstration. 
