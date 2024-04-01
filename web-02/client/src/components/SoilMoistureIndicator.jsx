@@ -8,7 +8,9 @@ import {
 
 import '../font.css';
 
-
+/*
+Component for displaying soil moisture data in a linear guage.
+*/
 
 function SoilMoistureIndicator (props) {
 

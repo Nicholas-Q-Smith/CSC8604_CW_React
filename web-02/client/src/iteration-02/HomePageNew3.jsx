@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import { useState } from 'react';
 
 import HumidityIndicator from '../components/HumidityIndicator';
 import SoilMoistureIndicator from '../components/SoilMoistureIndicator';
@@ -27,43 +27,46 @@ function HomePage3(){
 
     let {data, vals, plantvals} = GetDebugData();
         
-    console.log(vals)
+    const [autoUpdate, setAutoUpdate] = useState(false);
+    
 
-    if(view1) {    
+    //Debug console message 
+    
+    const toggleAutoUpdate = () => {
+      setAutoUpdate(!autoUpdate);
+      console.log("Toggle Switch Status: " + autoUpdate);
+    }
 
     return (
         <>
         
-        <HorizontalLayoutNav/>
-
-        <HumidityIndicator sensor={2} humidity={Number(vals.rh)}/>
-
+        <HorizontalLayoutNav onToggle={toggleAutoUpdate}/>
+  
+        <HumidityIndicator sensor={2} isAutoUpdating={autoUpdate}/>
+  
         <hr class="rounded"></hr>
-
-        <SoilMoistureIndicator moisture={Number(vals.sm)}/>
-
+  
+        <SoilMoistureIndicator sensor={2} isAutoUpdating={autoUpdate}/>
+  
         <hr class="rounded"></hr>
-
+  
         <SeasonsDisplayDay/>
-
+        
         <hr class="rounded"></hr>
-
-        <DigitalTemp temp={Number(vals.tmp)}/>
-
+  
+        <DigitalTemp sensor={2} isAutoUpdating={autoUpdate}/>
+  
         <hr class="rounded"></hr>
         
         <RelevantPlants plantvals={plantvals}/>
-
-
+  
         </>
         
-        );
-    } else if(view2) {
-
-      //other view 
-
-    }
-    }
+      );
+        
+        
+  } 
+    
 
 
 export default HomePage3;

@@ -37,7 +37,7 @@ function HomePage() {
     const [autoUpdate, setAutoUpdate] = useState(false);
     
 
-    //Debug console message 
+    
     
     const toggleAutoUpdate = () => {
       setAutoUpdate(!autoUpdate);
