@@ -2,9 +2,7 @@ import React from "react";
 
 import HorizontalLayoutNav from "../components/HorizontalLayoutNav";
 import Graph from "../components/Graph";
-import GraphView from "../components/Graph";
 
-import Dropdown from 'react-dropdown';
 
 import './GraphPage.css';
 
