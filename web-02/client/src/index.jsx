@@ -8,14 +8,13 @@ import './fonts/JuliusSansOne-Regular.ttf';
 
 import reportWebVitals from './reportWebVitals';
 
-import { BrowserRouter, Routes, Route, Switch, Router } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
 
 import HomePageNew from './iteration-02/HomePageNew';
 import HomePageNew2 from './iteration-02/HomePageNew2';
 import HomePage3 from './iteration-02/HomePageNew3';
-import GraphView from './components/Graph';
 import GraphPage from './iteration-02/GraphPage';
 
 
