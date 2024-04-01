@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  LinearGauge, Scale, MinorTick, Export, Title, Font, Label, ValueIndicator
+  LinearGauge, Scale, MinorTick, Export, Title, Font, ValueIndicator
 } from 'devextreme-react/linear-gauge';
 
 /* Older sensor, but left in for 

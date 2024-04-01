@@ -19,8 +19,6 @@ be implemented in the future.
 
 export default function GraphPage() {
     
-    let activeTab = 1;
-
     //Default state is 1.
 
     const [value, setValue] = React.useState(1);
