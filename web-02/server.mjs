@@ -1,41 +1,29 @@
-import { createRoot } from 'react-dom/client';
-
 import express from 'express'
 
 import path from 'path'
-
-import ThingSpeakClient from 'thingspeakclient'
 
 import { fileURLToPath} from 'url'
 
 import https from 'https'
 
-import fs from 'fs'
-
-import parse from 'node-html-parser'
-
 import plant_env_match from './client/src/data/plant-env-match.json' with {type: "json"};
 
 const app = express()
-
 
 const currentFolder = path.dirname(fileURLToPath(import.meta.url))
 
 let visitors = 0
 
-var client = new ThingSpeakClient();
+/* These last sensor values allow caching
+of the last valid values fetched from the sensors.
+In case of erroneous values or sensor failure, the 
+last valid values will be re-returned, preventing
+the front-end from displaying erroneous or undefined data.
 
-client.attachChannel(2455916, { readKey:'FCIJ1UCNZZHEORPO'});
-
-var channelId = 2455916;
-
-var fieldId = 1;
-
-var err;
-
-var resp;
-
-
+A more robust system for the sensor design and a means of 
+notifying the users of this failure
+should be implemented in the future
+*/
 
 let lastHumidity = 0;
 
@@ -50,6 +38,7 @@ let lastTemperature2 = 0;
 
 let lastSoilMoisture2 = 0;
 
+//Port defined, 3001 differing from the front-end port of 3000
 
 const PORT = process.env.PORT || 3001;
 
@@ -58,16 +47,24 @@ app.listen(PORT, () => {
 });
 
 
+/*
+Confirmation of connection to the backend
+Debug function
+*/
+
 app.get("/api", (req, res) => {
   res.json({message: `Connection Confirmed from Node.js Backend Proxy at Port: ${PORT}`})
 });
 
 
-app.get('/visit', (req, res) => {
-    const filename = path.join(currentFolder, 'visit.html')
-    res.send("Visitors:" + (visitors+=1))
-    res.sendFile(fileName)
-})
+/* This endpoint fetches the last 10 values from the sensor
+channel and calculates the average humidity and temperature
+values from them. It then compares these values to the
+range of values for each plant classification and determines
+whether there is a match. If there is a match, the plant
+classification is returned to the front-end. 
+This is for Plot 1.
+*/
 
 app.get('/get-best-match', (req, res) => {
   https.get(`https://api.thingspeak.com/channels/2455916/feeds.json?api_key=FCIJ1UCNZZHEORPO&results=10
@@ -171,24 +168,22 @@ app.get('/get-best-match', (req, res) => {
 
     // console.log(plant_env_match.PlantClassifications);
 
-    /*
-      The below code iterates through all plant classifications and determines whether
-      after comparing the avg humidity to the range of BEST
-      humidities for each type, there is a match
-    */
 
     let finalJOBJ = [];
 
-    for(let iterable in plant_env_match.PlantClassifications) {
+    /*
+    The below code iterates through all plant classifications and determines whether 
+    after comparing the avg conditions to the range of conditions for each type, there is a match
+    We are only using the soil moisture for now, but this will be expanded to include all
+    sensor values in the future. I have retained the code condition from the demonstration for proof
+    of purpose.
+    */
 
-        // if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
-        //       plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)
-        //       || range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
-        //         plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureUpperBound).includes(48)) {
-            
-        console.log("Testing val" + lastSoilMoisture2);
+    for(let iterable in plant_env_match.PlantClassifications) {
+          
         if(range(plant_env_match.PlantClassifications[iterable].Conditions.SoilMoistureLowerBound, 
           plant_env_match.PlantClassifications[iterable].Conditions.SoilMoistureUpperBound).includes(lastSoilMoisture)) {
+
             console.log("Match found: " + plant_env_match.PlantClassifications[iterable].Type)
             
             finalJOBJ.push({type: `${plant_env_match.PlantClassifications[iterable].Type}`,
@@ -196,25 +191,14 @@ app.get('/get-best-match', (req, res) => {
             struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
             pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
             light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`})
-
-            // console.log(JSON.stringify({type: `${plant_env_match.PlantClassifications[iterable].type}`,
-            // examples: [`${plant_env_match.PlantClassifications[iterable].Examples}`], 
-            // struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
-            // pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
-            // light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`}))
         } else {
             console.log("No match found");
-        
         }
-
     }
 
     console.log("Final JOBJ" + JSON.stringify(finalJOBJ[0]))
 
     res.json(finalJOBJ);
-
-    
-
     });
 
     // The whole response has been received. Print out the result.
@@ -229,6 +213,15 @@ app.get('/get-best-match', (req, res) => {
   
   
 })
+
+/* This endpoint fetches the last 10 values from the sensor
+channel and calculates the average humidity and temperature
+values from them. It then compares these values to the
+range of values for each plant classification and determines
+whether there is a match. If there is a match, the plant
+classification is returned to the front-end. 
+This is for Plot 2.
+*/
 
 app.get('/get-best-match2', (req, res) => {
   https.get(`https://api.thingspeak.com/channels/2480580/feeds.json?api_key=7R7Q5ZUPL4G0EL9B&results=10
@@ -330,20 +323,26 @@ app.get('/get-best-match2', (req, res) => {
 
 
 
-    // console.log(plant_env_match.PlantClassifications);
+    
 
-    /*
-      The below code iterates through all plant classifications and determines whether
-      after comparing the avg humidity to the range of BEST
-      humidities for each type, there is a match
-    */
+    
 
     let finalJOBJ = [];
+
+    /*
+    The below code iterates through all plant classifications and determines whether 
+    after comparing the avg conditions to the range of conditions for each type, there is a match
+    We are only using the soil moisture for now, but this will be expanded to include all
+    sensor values in the future. I have retained the code condition from the demonstration for proof
+    of purpose.
+    */
 
     for(let iterable in plant_env_match.PlantClassifications) {
         const classification = plant_env_match.PlantClassifications[iterable];
         const conditions = classification.Conditions;
-    
+
+
+
         // if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
         //       plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)
         //       || range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
@@ -393,6 +392,13 @@ app.get('/get-best-match2', (req, res) => {
   
 })
 
+/*
+Debugging endpoint for testing the sensor values
+Returns all sensor values from the last 10 entries
+from the sensor channel, not constrained by the 
+conditions for the plant classifications.
+*/
+
 
 
 app.get('/get-all-matches', (req, res) => {
@@ -409,15 +415,6 @@ app.get('/get-all-matches', (req, res) => {
     
     for(let iterable in plant_env_match.PlantClassifications) {
         
-
-        // if (range(plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityLowerBound, 
-        //       plant_env_match.PlantClassifications[iterable].Conditions.BestHumidityUpperBound).includes(48)
-        //       || range(plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureLowerBound, 
-        //         plant_env_match.PlantClassifications[iterable].Conditions.BestTemperatureUpperBound).includes(48)) {
-            
-
-        // if(range(plant_env_match.PlantClassifications[iterable].Conditions.BestSoilMoistureLowerBound, 
-        //   plant_env_match.PlantClassifications[iterable].Conditions.BestSoilMoistureUpperBound).includes(field1Values.at(-1))) {
             console.log("Match found: " + plant_env_match.PlantClassifications[iterable].Type)
             
             finalJOBJ.push({type: `${plant_env_match.PlantClassifications[iterable].Type}`,
@@ -425,18 +422,7 @@ app.get('/get-all-matches', (req, res) => {
             struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
             pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
             light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`})
-
-            // console.log(JSON.stringify({type: `${plant_env_match.PlantClassifications[iterable].type}`,
-            // examples: [`${plant_env_match.PlantClassifications[iterable].Examples}`], 
-            // struct: `${plant_env_match.PlantClassifications[iterable].Conditions.Structure}`, 
-            // pH: `${plant_env_match.PlantClassifications[iterable].Conditions.pH}`,
-            // light: `${plant_env_match.PlantClassifications[iterable].Conditions.Light}`}))
-        // } else {
-        //     console.log("No match found");
-        
-        // }
-
-    }
+        }
 
     console.log("Final JOBJ" + JSON.stringify(finalJOBJ))
 
@@ -458,6 +444,11 @@ app.get('/get-all-matches', (req, res) => {
   
   
 })
+
+/*
+Returns the last sensor values from the sensor channel
+This is for Plot 1.
+*/
 
 app.get('/sensors', (req, res) => {
     const filename = path.join(currentFolder, 'sensors.html')
@@ -529,8 +520,8 @@ app.get('/sensors', (req, res) => {
     
     
 
-    // res.json({rh: `${Number(lastHumidity)}`, tmp: `${Number(lastTemperature)}`, sm: `${Number(lastSoilMoisture)}`})
-    res.json({rh: `${Number(11)}`, tmp: `${Number(5)}`, sm: `${Number(50)}`})
+    res.json({rh: `${Number(lastHumidity)}`, tmp: `${Number(lastTemperature)}`, sm: `${Number(lastSoilMoisture)}`})
+    
     
     });
 
@@ -546,6 +537,12 @@ app.get('/sensors', (req, res) => {
     
 
 })
+
+
+/*
+Returns the last sensor values from the sensor channel
+This is for Plot 2.
+*/
 
 app.get('/sensors2', (req, res) => {
   const filename = path.join(currentFolder, 'sensors.html')
@@ -566,12 +563,6 @@ app.get('/sensors2', (req, res) => {
   console.log("Start point " + startPoint + " End point " + endPoint)
   
   
-  
-  
-  // for (const x in newObj) {
-  //     console.log("Iter vals " + x)
-  //     newText += x;
-  // }
   console.log(obj)
   
   let feeds = obj.feeds;
@@ -616,9 +607,8 @@ app.get('/sensors2', (req, res) => {
   }
   
 
-  // res.json({rh: `${Number(lastHumidity2)}`, tmp: `${Number(lastTemperature2)}`, sm: `${Number(lastSoilMoisture2)}`})
-  // res.json({rh: `${Number(11)}`, tmp: `${Number(field2Values)}`, sm: `${Number(field3Values)}`})
-  res.json({rh: `${Number(23)}`, tmp: `${Number(32)}`, sm: `${Number(50)}`})
+  res.json({rh: `${Number(lastHumidity2)}`, tmp: `${Number(lastTemperature2)}`, sm: `${Number(lastSoilMoisture2)}`})
+  
   
   });
 
@@ -631,12 +621,13 @@ app.get('/sensors2', (req, res) => {
   console.log("Error: " + err.message);
 });
 
-  
-
 })
 
 
-
+/*
+Returns range of values from start to end
+in an array
+*/
 
 function range(start, end) {
   console.log("Start: " + start + " End: " + end)
@@ -647,6 +638,10 @@ function range(start, end) {
   return([...Array(end + 1).keys()].filter(value => end >= value && start <= value ));
 }
 
+/*
+Returns true if value is within the bounds
+stated in parameters
+*/
 
 function isInBounds(value, lowerBound, upperBound) {
   return value >= lowerBound && value <= upperBound;
@@ -654,4 +649,3 @@ function isInBounds(value, lowerBound, upperBound) {
 
 app.use('/website', express.static(currentFolder));
 
-// app.listen(3000)
